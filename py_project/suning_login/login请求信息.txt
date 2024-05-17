@@ -1,0 +1,73 @@
+username: 15819238912
+password: 
+password2: bquTpnwePZg8qc8/j5vzyHVjwxoYrff7Rc384Co5AeeGwUauryC6DXx8jvV47WQ8vZ+cXG5YSl6dFi9+Q6MAVz1hLiDVzCvOI/rVAcGP/GBBFjQN6tX8OkMSqMaH3dtyCJUGXY+ReWcSbOIYbuz7LVmX+zPV4RANVUgC+EYtmk4=
+loginTheme: wap_new
+service: https://sign.suning.com/sign-web/auth?targetUrl=https%3A%2F%2Fsign.suning.com%2Fsign-web%2Fm%2Fnewsign%2Fto%2Findex.do%3Fwx_navbar_transparent%3Dtrue
+loginChannel: 208000200011
+rememberMe: true
+client: app
+sceneId: logonImg
+oauth_redirect: 
+detect: mmds_WSHfKf2SSSAfDf2SSS4fAf2SSSjfnf2SSSyfYfV2SSSXfUf2SSS.flf2SSSkfBf2SSS5f8f2SSSwf8fSmSSSwfGfPSSSNfGf~SSSNf1f2SSSNfMf2SSSTfpfS~SSS2fpfmSSSrfJfmSSSrfRf2SSSrfQfTSSSvfQfSrSSSvf-f2SSS9fLf2SSS3fzfmSSSsfif2SSSsfS3S2SSSVfS32SSSSfs32SSSEs932SSScs93kSSScsv3VTSSSis23vSSSosN3vSSSzsw3rSSS-sk32SSS-sq3SrSSSCsX3~SSSRsy32SSSJsO3mSSS7sj3mSSSpsD3SLrSSps~3eEWQexsPcWPWEPE5cehUPc4nF5shF~is5P0PsnccQsE4G44UhG~5WPe0IWeIEFe4F4e.WSSofN9cnSSONA24qSSJqZs0.VSGm436VfSvfnsuifSps~3ePeP4IIeceP4IIe0_9SSS9SSSXeJ6SS2fH4sSSSesFWPcPcWIcePe0s3jUhGljhUeeP0cWQ5IW0Wc04e0EWeSVsf39vr2TeDRSSSSSSNHSSKVSSSSSS.VSS9SSSSSSSfSSSVtSSSSSS3tSSSbVSSSSS0pSSA33SSSSS38VScVSSSSSSs1VSL2SSSSSS.SSSP6VSSSSSC6VSebu2SY38s2SSSU3ts2SSSB3Bs2SSS13Zs2SSSR3lsSTSSS-3gsrSSSi36s2SSSS96s2SSSf9ds2SSSv9IsV2SSS29us2SSS59us2SSS.9ns2SSSK9ns2SSSy9hsS2SSSj9as2SSS49as2SSS09bs2SSSu9Fs2SSSd9DsV2SSSP9Os2SSSZ9Ks2SSSt9ms2SSSG9.s2SSSM9ksSZOSS89jVKSSSa9uVqSSS59GVrSSSf9CVrSSS-3EVSrSSSG32s2SSS63ms2SSSb3Fs2SSSX3ns2SSS23gsV2SSSS3_s2SSSLfLs2SSS7fSf2SSSZfrf2SSS6f5fV2SSI4IFh45P0_._d4aeaf4f-fb89-430b-a174-c1432069ffbd_._
+dfpToken: THPRHt18de52b46c8bhE14bc7___w7DDp8Kewpxrw4AZbMOwKmbCoMOJC8OLw75RwqrCt8On
+terminal: WAP
+
+
+
+
+
+Request URL: https://passport.suning.com/ids/login
+Request Method: POST
+Status Code: 200 OK
+Remote Address: 183.2.168.135:443
+Referrer Policy: strict-origin-when-cross-origin
+Cache-Control: no-cache
+Connection: keep-alive
+Content-Type: application/json;charset=UTF-8
+Date: Mon, 26 Feb 2024 11:27:57 GMT
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Pragma: No-cache
+Server: volc-dcdn
+server-timing: cdn-cache;desc=MISS, origin;dur=153, edge;dur=0
+Set-Cookie: authId=siynTtNVkusOYB9c01NSaIRlgeOYkvOY03;domain=.suning.com;path=/;HTTPOnly;
+Set-Cookie: secureToken=8710549517867C1AD8EA3B74BD3F16E5;domain=.suning.com;path=/;secure;HTTPOnly;
+Set-Cookie: TGC=TGTW0I8MQLMvco9dUaHTsyo1zrKzsYAVz1614I8H5rL; path=/ids/; HttpOnly
+Set-Cookie: TGCB=TGTW0I8MQLMvco9dUaHTsyo1zrKzsYAVz1614I8H5rL; path=/ids/; HttpOnly; Max-Age=7200; Expires=Mon, 26-Feb-2024 13:27:57 GMT
+Set-Cookie: custLevel=161000000110; path=/; domain=.suning.com
+Set-Cookie: custno=6102905567; path=/; domain=.suning.com; Max-Age=1728000; Expires=Sun, 17-Mar-2024 11:27:57 GMT
+Set-Cookie: ecologyLevel=ML100102; path=/; domain=.suning.com
+Set-Cookie: idsLoginUserIdLastTime=; path=/; domain=.suning.com; Max-Age=1728000; Expires=Sun, 17-Mar-2024 11:27:57 GMT
+Set-Cookie: ids_r_me=NjEwMjkwNTU2N19CUk9XU0VSXzE3MDg5NDY4NzcyNjlfMTcwODk0Njg3NzI2OV8wX2JhOWY2NjE1%0D%0ANmRhNjg2NmM4MDI4MmNlMjg4OWI2YmVm%0D%0A; path=/; HttpOnly; Max-Age=860400; Expires=Thu, 07-Mar-2024 10:27:57 GMT
+Set-Cookie: logonStatus=0; path=/; domain=.suning.com; Max-Age=864000; Expires=Thu, 07-Mar-2024 11:27:57 GMT
+Set-Cookie: nick=kfttt...; path=/; domain=.suning.com; Max-Age=864000; Expires=Thu, 07-Mar-2024 11:27:57 GMT
+Set-Cookie: nick2=kfttt...; path=/; domain=.suning.com; Max-Age=864000; Expires=Thu, 07-Mar-2024 11:27:57 GMT
+Set-Cookie: rolloutLdc=; path=/; domain=.suning.com; Max-Age=0; Expires=Thu, 01-Jan-1970 00:00:00 GMT
+Set-Cookie: sncnstr=GQ1fp3MaXo9xLPQkpNTg9Q%3D%3D; path=/; domain=.suning.com; Max-Age=1728000; Expires=Sun, 17-Mar-2024 11:27:57 GMT
+Set-Cookie: ssotbrd=TGTW0I8MQLMvco9dUaHTsyo1zrKzsYAVz1614I8H5rL; path=/; domain=.suning.com; HttpOnly
+Set-Cookie: tradeMA=223; path=/; domain=.suning.com; HttpOnly; Max-Age=25920000; Expires=Wed, 28-Feb-2024 05:11:13 GMT
+Strict-Transport-Security: max-age=300
+Transfer-Encoding: chunked
+via: n173-191-130.bdcdn-gzct02.ToB
+X-Dsa-Origin-Status: 200
+x-dsa-trace-id: 17089468776227d92fa86425e701ee4b6be0808d00
+X-Powered-By: SNMW-WEB1.0
+x-request-ip: 125.94.216.73
+x-tt-trace-tag: id=5
+Accept: application/json
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9
+Connection: keep-alive
+Content-Length: 1689
+Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+Cookie: TGC=TGTwfvc7SH610n5CnLMTscO3CpE3CqJeZAg5KDrqGFz; TGCB=TGTwfvc7SH610n5CnLMTscO3CpE3CqJeZAg5KDrqGFz; _snvd=1705411554257Cbv420RfLMk; hm_guid=ed103a54-e5bc-4171-a009-23f33defb481; _df_ud=d42d7099-7c3f-486e-b8e6-2f9e3b00232a; _device_session_id=p_48659dd7-a188-4c2b-ba4b-a0eda9d12258; _cp_dt=65c40761-24f0-49cf-9891-32c3359bf867-61118; streetCode=7510199; SN_CITY=190_751_1000047_9047_01_10316_2_0; districtId=10316; tradeMA=223; route=4432b4588ac521aa77e13abd582c2580; authId=siynhjfaly29AgggrMwfFyfcQggf8ZcR11; secureToken=1992B2209CC84B974A97D121551313E3; ssotbrd=TGTwfvc7SH610n5CnLMTscO3CpE3CqJeZAg5KDrqGFz; _snmc=1; _snsr=direct%7Cdirect%7C%7C%7C; _snzwt=THPRHt18de52b46c8bhE14bc7; token=d4aeaf4f-fb89-430b-a174-c1432069ffbd; _snma=1%7C170541155318546446%7C1705411553185%7C1708946834819%7C1708946839782%7C83%7C19; _snmp=170894683971635769; _snmb=170894683482483009%7C1708946839799%7C1708946839789%7C2
+Host: passport.suning.com
+Origin: https://passport.suning.com
+Referer: https://passport.suning.com/ids/login?service=https%3A%2F%2Fsign.suning.com%2Fsign-web%2Fauth%3FtargetUrl%3Dhttps%253A%252F%252Fsign.suning.com%252Fsign-web%252Fm%252Fnewsign%252Fto%252Findex.do%253Fwx_navbar_transparent%253Dtrue&loginTheme=wap_new
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="99", "Google Chrome";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.51 Safari/537.36
+X-Requested-With: XMLHttpRequest

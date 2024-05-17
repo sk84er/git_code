@@ -1,0 +1,2755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta content="telephone=no" name="format-detection" />
+  <title>登录</title>
+  <link rel="stylesheet" href="https://res.suning.cn/project/passport/login/wapV8/css/??base5.0.min.css,login.min.css?v=20201026">
+  <link rel="stylesheet" type="text/css" href="https://dt.suning.com/detect/static/siller.css?v=20200713">
+  <script  type="text/javascript" src="https://open.95516.com/s/open/js/upsdk.js"></script>
+ <style>
+  body{
+	min-height: 24rem;
+	position: relative;
+  }
+  footer{
+    margin: 0;
+    position: absolute;
+    left: 2.9rem;
+    bottom: 0.84rem;
+  }
+  footer b{
+	color:#101010;
+  }
+        input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+            -webkit-text-fill-color: #222 !important;
+            -webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;
+            background-color:transparent;
+            background-image: none;
+            transition: background-color 50000s ease-in-out 0s;
+        }
+        input{
+            background-color:transparent;
+        }
+        .password_inputBox input::-webkit-input-placeholder,.tel_inputBox input::-webkit-input-placeholder{
+
+            font-family: PingFangSC-Regular;
+
+            font-size: .6rem;
+
+            color: #CCCCCC;
+
+            letter-spacing: 0;
+
+            font-weight: 400;
+        }
+	.login-icon{
+            width: 1.8rem;
+            height: 1.8rem;
+            margin-right: .6rem;
+  	}
+	.eck-d-w {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100vw;
+      height: 667px;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 99;
+    }
+    .eck-d {
+      position: absolute;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 240px;
+      background: #fff;
+      border-radius: 12px;
+    }
+    .eck-choose-top {
+      padding: 8px 72px;
+      background: url('https://res.suning.cn/project/passport/login/wapV8/images/eck-bg.png') no-repeat center/contain;
+      border-radius: 8px;
+      height: 64px;
+      text-align: center;
+      font-family: PingFangSC-Medium;
+      font-size: 17px;
+      color: #222222;
+      margin-bottom: 30px;
+	  line-height: 1.3;
+    }
+    .eck-choose-i {
+      width: 260px;
+      height: 45px;
+      border: 1px solid #cccccc;
+      border-radius: 9px;
+      margin: 0 auto 15px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #666666;
+    }
+    .eck-close-icon {
+      position: absolute;
+      width: 27px;
+      height: 27px;
+      background: url('https://res.suning.cn/project/passport/login/wapV8/images/eck-close-icon.png') no-repeat center/contain;;
+      bottom: -57px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .eck-choose--f { 
+      font-size: 15px; 
+      color: #222222; 
+    }
+    .eck-d-form {
+      height: 232px;
+      padding: 0 20px;
+    }
+    .eck-d-form-t {
+      text-align: center;
+      margin: 25px 0 25px;
+      font-family: PingFangSC-Medium;
+      font-size: 17px;
+      color: #222222;
+    }
+    .eck-input {
+      position: relative;
+      margin: 0 auto;
+      border: 1px solid #cccccc;
+      border-radius: 9px;
+      width: 260px;
+      height: 45px;
+      font-size: 15px;
+      color: #999999;
+      padding: 12px 18px;
+    }
+    .eck-form--tip {
+      margin: 6px 3px;
+      font-size: 13px;
+      color: #FF5500;
+      height: 38px;
+    }
+    .eck-form--reg {
+      color: #06e;
+    }
+    .eck-empty-icon {
+      right: .4rem;
+      bottom: .4rem;
+    }
+    .eck-d-fail {
+      height: 180px;
+    }
+    .eck-d-fail-t {
+      margin: 42px auto 40px;
+      width: 222px;
+      font-family: PingFangSC-Medium;
+      font-size: 17px;
+      color: #222222;
+      text-align: center;
+    }
+    .eck-d-fail-b {
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .eck-d-fail-bb {
+      width: 125px;
+      height: 33px;
+      border-radius: 6px;
+      text-align: center;
+      font-family: PingFangSC-Medium;
+      font-size: 14px;
+      color: #222222;
+      line-height: 33px;
+    }
+    .eck-d-fail-b1 {
+      border: 1px solid #CCCCCC;
+    }
+    .eck-d-fail-b2,.eck-d-form-b2  {
+      background: #FFCC00;
+    }
+    .eck-d-form-b {
+      padding: 8px 0;
+    }
+  </style>
+  	<script type="text/javascript">
+		//封装cookie方法的对象
+		var Cookies = {
+			setCookie:function(key,value,time){
+				if(key == undefined){
+					return;
+				}
+				if(time!== undefined){
+					var d = new Date();
+					d.setTime(d.getTime()+time*1000*60*60);
+					document.cookie=key+"="+value+";expires="+ d.toGMTString();
+				}else{
+					document.cookie=key+"="+value;
+				}
+			},
+			getCookie2:function(key){
+				var index = document.cookie.indexOf(key);
+				var returnValue;
+				if(index!==-1){
+					var tIndex = document.cookie.indexOf(";",index);
+					var target = document.cookie.substring(index,tIndex);
+					var returnValue = decodeURIComponent(target.replace(key+"=",""))
+				 }
+				return returnValue;
+			},
+			getCookie:function(name){
+				var arrStr = document.cookie.split(";");
+				var value ="";
+				for(var i = 0;i < arrStr.length;i++){
+					var temp = arrStr[i].split("=");
+					if(temp[0].trim() == name){
+						value = temp[1];
+						return value;
+					}
+				}
+			},
+			delCookie:function(key,domain){
+				var d = new Date();
+				d.setTime(d.getTime() - 1);
+				//alert("删除cookie代码：" + key+"=;expires="+ d.toGMTString()+";domain="+domain+";path=/");
+				document.cookie=key+"=;expires="+ d.toGMTString()+";domain="+domain+";path=/";
+			}
+		}
+		function getQueryVariable(variable) {
+			var query = window.location.search.substring(1);
+			var vars = query.split("&");
+			if (!vars){
+				return "";
+			}
+			for (var i=0;i<vars.length;i++) {
+				var pair = vars[i].split("=");
+				if(pair[0] == variable){
+					return pair[1];
+				}
+			}
+			return "";
+		}
+	</script>
+    <script type="text/javascript">
+		var _targetUrl_ = "?loginTheme=wap_new&service=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F".split("targetUrl%3D");
+		var agent = navigator.userAgent.toLowerCase();
+		if(navigator.userAgent.match(/wxwork/i)) {
+			// 企业微信，展示正常的账密或者短信验证码登录页面
+			// 因为企业微信也含有微信的“MicroMessenger”关键词，所以需要提前判断企业微信，然后什么都不做
+		} else if((agent.indexOf('alipayclient') > -1 || agent.indexOf('dingtalk') > -1) && (agent.indexOf('miniprogram') > -1 || agent.indexOf('alipayide') > -1 || agent.indexOf('dingtalkide') > -1)) {//判断支付宝、钉钉小程序
+			var miniUrl = "https://appx/web-view.min.js";
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = miniUrl;
+			document.querySelectorAll("head")[0].appendChild(script);
+			// 小程序原生登录页url
+			var miniLoginUrl = "/packageA/pages/loginFive/loginForH5/index?target=";
+			miniLoginUrl = miniLoginUrl + encodeURIComponent('/pages/webView/index?webViewSrc='+decodeURIComponent(_targetUrl_[1]));
+			var createChannel = getQueryVariable("createChannel");
+			if (createChannel && createChannel.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&createChannel=" + createChannel;
+			}
+			var store = getQueryVariable("store");
+			if (store && store.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&store=" + store;
+			}
+			var branch = getQueryVariable("branch");
+			if (branch && branch.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&branch=" + branch;
+			}
+			var createSource = getQueryVariable("createSource");
+			if (createSource && createSource.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&createSource=" + createSource;
+			}
+			//人机识别初始化token变量
+			script.onload = function () {
+			my.getEnv(function (res) {
+				if (res.miniprogram) {
+					my.redirectTo({ url: miniLoginUrl});
+				}
+			})
+			}		  
+			var style = document.createElement("style");
+			style.appendChild(document.createTextNode(".wx-mini-hide {display:none}"));
+			document.head.appendChild(style); 
+		} else if(navigator.userAgent.match(/miniProgram/i) == "miniProgram") {//判断微信小程序 微信7.0.0
+			var miniUrl = "//res.wx.qq.com/open/js/jweixin-1.3.2.js";
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.src = miniUrl;
+			document.querySelectorAll("head")[0].appendChild(script);
+			// 小程序原生登录页url
+			var miniLoginUrl = "/packageA/pages/loginFive/loginForH5/index?target=";
+			miniLoginUrl = miniLoginUrl + encodeURIComponent('/pages/webView/index?webViewSrc='+decodeURIComponent(_targetUrl_[1]));
+			var createChannel = getQueryVariable("createChannel");
+			if (createChannel && createChannel.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&createChannel=" + createChannel;
+			}
+			var store = getQueryVariable("store");
+			if (store && store.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&store=" + store;
+			}
+			var branch = getQueryVariable("branch");
+			if (branch && branch.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&branch=" + branch;
+			}
+			var createSource = getQueryVariable("createSource");
+			if (createSource && createSource.length > 0) {
+				miniLoginUrl = miniLoginUrl + "&createSource=" + createSource;
+			}
+			  //人机识别初始化token变量
+			  script.onload = function () {
+				wx.miniProgram.getEnv(function (res) {
+				  if (res.miniprogram) {
+					wx.miniProgram.redirectTo({ url: miniLoginUrl});
+				  }
+				})
+			  }		  
+		      var style = document.createElement("style");
+		      style.appendChild(document.createTextNode(".wx-mini-hide {display:none}"));
+		      document.head.appendChild(style); 
+		}else if (navigator.userAgent.match(/MicroMessenger/i)) {
+			var weixinRedirectUrl = "https://mobts.suning.com/suning-web-mobile/weixin/auth.htm?weixinRedirectUrl=";
+			weixinRedirectUrl = weixinRedirectUrl + _targetUrl_[1];
+			// getQueryVariable
+			var createChannel = getQueryVariable("createChannel");
+			if (createChannel && createChannel.length > 0) {
+				weixinRedirectUrl = weixinRedirectUrl + "&createChannel=" + createChannel;
+			}
+			var store = getQueryVariable("store");
+			if (store && store.length > 0) {
+				weixinRedirectUrl = weixinRedirectUrl + "&store=" + store;
+			}
+			var branch = getQueryVariable("branch");
+			if (branch && branch.length > 0) {
+				weixinRedirectUrl = weixinRedirectUrl + "&branch=" + branch;
+			}
+			var createSource = getQueryVariable("createSource");
+			if (createSource && createSource.length > 0) {
+				weixinRedirectUrl = weixinRedirectUrl + "&createSource=" + createSource;
+			}
+			window.location.href = weixinRedirectUrl;
+		} else if (navigator.userAgent.match(/weibo/i)){
+			var service = "https://aq.suning.com/asc/auth?targetUrl=https://m.suning.com/";
+			var weibourl = "https://api.weibo.com/oauth2/authorize?client_id=4120269038&response_type=code&redirect_uri=https%3A%2F%2Fpassport.suning.com%2Fids%2Flogin%3Foauth_provider%3DSinaWeiBoProvider%26loginTheme%3Dwap_new%26agentType%3Dwap";
+			if(!service || service==""){
+				window.location.href = weibourl;
+			} else {
+				window.location.href = weibourl + encodeURIComponent("&state=" + encodeURIComponent(service))
+			}
+		} /* else if ((new RegExp(/(com.unionpay.chsp)/).test(agent)) || (new RegExp(/(com.unionpay.mobilepay)/).test(agent))) {
+			// 银联云闪付联合登录接入
+			var service = "https://aq.suning.com/asc/auth?targetUrl=https://m.suning.com/";
+			var errorCode = '';
+			if(!errorCode && errorCode!="undefined"){
+				// 新授权（需要手机号），跳转单独页面
+				var oauthPageUrl = "https://msinode.suning.com/m/auth";
+				var passportUrl = "https://passport.suning.com/ids/login?oauth_provider=YunShanFuProvider&loginTheme=wap_new&agentType=wap";
+				var providerAppType = Cookies.getCookie("snpvat");
+				if(providerAppType && providerAppType != "undefined"){
+					passportUrl = passportUrl + "&providerAppType=" + Cookies.getCookie("snpvat"); 
+				}
+				passportUrl = passportUrl + "&code="; 
+
+				oauthPageUrl = oauthPageUrl + "?passportUrl=" + encodeURIComponent(passportUrl); 
+				oauthPageUrl = oauthPageUrl + "&service=" + encodeURIComponent(service); 
+				oauthPageUrl = oauthPageUrl + "&debug=true"; 
+				// 为了防止非以旧换新小程序的cookie影响以旧换新，跳转之前删除掉cookie
+				Cookies.delCookie("snpvat", ".suning.com");
+				window.location.href = oauthPageUrl;
+			} else {
+				alert("登录失败，errorCode=" + errorCode);
+			}
+		} */
+
+		if (navigator.userAgent.match(/PPTVSPORTS/i)) {
+		  var ppsports="https://ppsports.suning.com/loginApp/index.html?PPSportsSource=Suningebuy&targetURL=";
+			window.location.href = ppsports + decodeURIComponent(_targetUrl_[1]);
+		}
+		if (navigator.userAgent.match(/PPTV/i) && !navigator.userAgent.match(/PPTVSPORTS/i)) {
+		  var _targetUrl_d_1 = decodeURI(_targetUrl_[1]);
+				window.location.href = "https://api.passport.pptv.com/loginTransfer?appplt=web&appid=wap&appver=1.0.0&type=suning&channel=208000100010&targetUrl="+ _targetUrl_d_1;
+		}
+        if (navigator.userAgent.match(/PPTV/i) && !navigator.userAgent.match(/PPTVSPORTS/i)) {
+             var _targetUrl_d_1 = "";
+             if(_targetUrl_[1] == null || _targetUrl_[1] == ""){
+                 var _location_href_ = window.location.href;
+                 var _temp_split_ = _location_href_.split("targetUrl=");
+                 var _split_index = _temp_split_[1].indexOf('&');
+                 _targetUrl_d_1 = _temp_split_[1].substring(0,_split_index);
+			}else{
+				 _targetUrl_d_1 = decodeURIComponent(_targetUrl_[1]);
+			}
+		    window.location.href = "https://api.passport.pptv.com/loginTransfer?appplt=web&appid=wap&appver=1.0.0&type=suning&channel=208000100010&targetUrl="+ _targetUrl_d_1;
+	    }
+		if (navigator.userAgent.match(/SamsungLifeService/i)) {
+   
+            var samsungUrl = "action://samsung.account.login?cp=SuNing&callback=https://passport.suning.com/ids/login?oauth_provider=SamsungProvider&agentType=wap&state=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F";
+                        //alert(samsungUrl)
+			window.location.href = samsungUrl  ;
+		}
+		
+        if (navigator.userAgent.match(/xinhua99/i)) {                       
+            var xinhuaUrl = "http://api.99gxcm.com/oauth/auth?client_id=h89arprtand0&response_type=code&scope=get_customer_info&redirect_uri=https%3A%2F%2Fpassport.suning.com%2Fids%2Flogin%3Foauth_provider%3DXinHuaJJProvider%26state%3Dhttps%253A%252F%252Faq.suning.com%252Fasc%252Fauth%253FtargetUrl%253Dhttps%253A%252F%252Fm.suning.com%252F";
+			window.location.href = xinhuaUrl ;
+        }
+	var url = window.location.search;	
+	if (navigator.userAgent.match(/iqiyi/i)&&url.indexOf("loginChannel")<0) {
+	    var passportUrl=encodeURIComponent("https://passport.suning.com/ids/login?oauth_provider=IqiyiProvider&loginTheme=wap_new&loginChannel=208000200010&targetUrl=");
+		var redirect_uri='';
+		if(_targetUrl_[1]== undefined){
+		   redirect_uri=passportUrl;
+		}else{
+		   redirect_uri=passportUrl+_targetUrl_[1];
+		}
+        var iqiyiUrl="https://openapi.iqiyi.com/api/oauth2/authorize?display=mobile&client_id=dde6f9edb4b640b3bb0ead52e387479a&response_type=code&redirect_uri="+redirect_uri;
+		window.location.href = iqiyiUrl;
+         }
+		 
+		 //咪咕视频联合登录接入
+		 if (navigator.userAgent.match(/miguvideo/i)) {
+			var jsydUrl = "https://m.miguvideo.com/mgs/share/thirdConnect/prd/index.html?redirectUrl="
+			var passportUrl=encodeURIComponent("https://passport.suning.com/ids/login?oauth_provider=MiguVideoProvider&loginTheme=wap_new&agentType=wap&targetUrl=");
+			var redirect_uri='';
+			if(_targetUrl_[1]== undefined){
+			   redirect_uri=passportUrl;
+			}else{
+			   redirect_uri=passportUrl+_targetUrl_[1];
+			}
+			window.location.href = jsydUrl +redirect_uri;
+		}
+		 
+    window.onload=function (){
+        if(!navigator.cookieEnabled){
+        var str = '您的手机浏览器不支持或已经禁止使用cookie，无法正常登录，请开启或更换其他浏览器';
+        document.getElementsByClassName("prompt")[0].innerHTML = str;
+		document.getElementsByClassName("prompt")[1].innerHTML = str;
+    }
+
+}
+        
+	</script>
+  <script type="text/javascript">
+		// 真正跳转的目标地址,默认首页
+		var goUrl = "http://m.suning.com/";
+		// 首页
+		var domain_url = "http://m.suning.com/";
+		// 安全中心
+		var asc_prefix_domain = "https://aq.suning.com/asc/";
+		// 注册
+		var srs_prefix_domain = "https://reg.suning.com/";
+		// 登录
+		var passport_prefix_domain =   "https://passport.suning.com/";
+		// 商家
+		var sop_prefix_domain = "https://sopssl.suning.com/";
+		var dt_Siller_Url     = "https://dt.suning.com/detect/dt/dragDetect.json";
+		// 客服
+		var nmqs_prefix_domain = "https://nmqs.suning.com/";
+		
+		var rdsy_prefix_domain = "https://rdsy.suning.com/";
+   </script> 
+   <meta content="true" name="autoclick">
+   <meta content="f73ee1cf" name="siteid">
+   <meta content="afupz9eaab" name="pageid">
+   <input type="hidden" id="pagename" value="pgcate=10009;pgtitle=wap登录页面;">
+   <input type="hidden"  id="resourceType" value="wap">
+   <!-- 设备人机埋点 -->
+   <script type="text/javascript" src="https://mmds.suning.com/mmds/mmds.js?appCode=qEmt9X4YmoV2Vye8"></script>
+   <script type="text/javascript" src="https://dfp.suning.com/dfprs-collect/dist/fp.js?appCode=qEmt9X4YmoV2Vye8"></script>
+</head>
+
+<body class="wx-mini-hide">
+  <header>
+    <!--<a href="javascript:;" class="close" onclick="goIosToback();"><img src="https://res.suning.cn/project/passport/login/wapV8/images/close.png" alt=""></a>-->
+    <div class="navUrl">
+      <a href="javascript:;" class="kf" onclick="goToKF();return false;" sa-data="{'eleid':'9'}">联系客服</a>
+      <!--<a href="javascript:;" class="qyzc" onclick="goToQYReg();return false;" sa-data="{'eleid':'10'}">企业注册</a>-->
+    </div>
+  </header>
+  <!-- 验证码登录 -->
+  <div class="login-content" sap-modid="06bWf5V">
+    <h2><image class="login-icon" src="https://res.suning.cn/project/passport/login/wapV8/images/login-icon.png">欢迎登录苏宁易购</h2>
+    <div class="tel_inputBox">
+      <label class="input-label" style="display: inline-block;left:0;">请输入手机号</label><i class="ico-close"></i>
+      <input type="tel" class="txt-input changeInput" id="phoneNum" name="phoneNum" sa-data="{'eleid':'1'}">
+    </div>
+	
+    <div style="position: absolute;left: 600px;top:200px;" id="captcha1"></div>
+	
+	<!--图片验证码 start-->
+	<div class="form-content imageVerifyArea" id="imageVerifyArea1" style="display:none;">
+		<label class="input-label" style="display: inline-block;left:0;">请输入验证码</label>
+		<input type="text" name="yzm" class="verifyCode changeInput" maxlength="4" autocomplete="off" >
+			<i class="ico-close abs-close"></i>
+				<!--<div class="form-input">
+					<input type="text" name="yzm" class="verifyCode" maxlength="4" autocomplete="off" placeholder="请输入验证码">
+				</div>-->
+			
+				<div class="codeNumImg">
+					<img class="vcodeimg" src="" name="WAP_login_password_pic">
+				</div>
+	</div>
+	<div class="siller-phoneNum sillerVerifyCode" id="WAP_login_message_slide" style="display:none;margin:.4rem 0;">
+			<div id="siller1"></div>
+	</div>
+	<div class="siller-box sillerVerifyCode" id="iarUsername">
+    	<div id="iar1"></div>
+    	</div>
+	
+    <div class="yzm_inputBox">
+	<div id="yzm" class="yzm">
+		<input type="tel" oninput="yzminput()" id="yzminput" name="yzm" autocomplete="one-time-code" sa-data="{'eleid':'3'}"/>
+	</div>
+      <a href="javascript:;" class="getYzm" sa-data="{'eleid':'2'}" >获取验证码</a>
+    </div>
+
+    <div style="font-family:PingFangSC-Regular;font-size:.48rem;margin-top: .24rem;color:#999999;">未注册的手机号验证后自动注册</div>
+    <div class="prompt" style="color:red;"></div>
+    <div class="btnBox">
+        <a href="javascript:loginSmsSubmitPre();" class="login_btn" sa-data="{'eleid':'4'}">登录</a>
+        <a href="javascript:;" class="other_btn1 login_switch_btn_box" sa-data="{'eleid':'8'}">账号密码登录</a>
+    </div>
+  </div>
+  <!-- 账密登录 -->
+  <div class="login-content2 hide" sap-modid="1R9ikN2">
+    <h2><image class="login-icon" src="https://res.suning.cn/project/passport/login/wapV8/images/login-icon.png">欢迎登录苏宁易购</h2>
+    <div class="tel_inputBox">
+     
+      <input type="text" placeholder="请输入手机号/用户名/邮箱" class="txt-input changeInput" id="username" name="username" maxlength="64" sa-data="{'eleid':'1'}">
+      <i class="ico-close"></i>
+    </div>
+    <div class="password_inputBox">
+ <!--    <label class="input-label" style="display: inline-block;left:0;">请输入密码</label>-->
+      <i class="ico-close abs-close"></i>
+      <i class="ico-eye" sa-data="{'eleid':'3'}"></i>
+      <a href="javascript:;" id="goForgetPwd" name="WAP_login_password_forgetpsd" class="forgetPass" sa-data="{'eleid':'13'}" >忘记密码</a>
+      <input type="password" placeholder="请输入密码" class="txtPassport-input changeInput" id="password" maxlength="20" name="password" sa-data="{'eleid':'2'}">
+    </div>
+	<!--图片验证码 start-->
+	<div class="form-content imageVerifyArea" id="imageVerifyArea1" style="display:none;">
+		<label class="input-label" style="display: inline-block;left:0;">请输入验证码</label>
+		<input type="text" name="yzm" class="verifyCode changeInput" maxlength="4" autocomplete="off" >
+			<i class="ico-close abs-close"></i>
+				<!--<div class="form-input">
+					<input type="text" name="yzm" class="verifyCode" maxlength="4" autocomplete="off" placeholder="请输入验证码">
+				</div>-->
+			
+				<div class="codeNumImg">
+					<img class="vcodeimg" src="" name="WAP_login_password_pic">
+				</div>
+			</div>
+	<div class="siller-account sillerVerifyCode" id="WAP_login_password_slide" style="display:none;margin:.4rem 0;">
+				<div id="siller2"></div>
+	</div>
+    	<div class="siller-box sillerVerifyCode" id="iarUsernamedx">
+    	<div id="iar1dx"></div>
+	</div>
+	<!--图片验证码 end-->
+    <div style="position: absolute;left: 600px;top:200px;" id="captcha2"></div>
+	<div class="prompt" style="color:red;margin-top:10px"></div>
+    <div class="btnBox">
+        <a href="javascript:loginSubmitPre();" class="login_btn"  sa-data="{'eleid':'4'}">登录</a>
+        <a href="javascript:;" class="other_btn2 login_switch_btn_box"  sa-data="{'eleid':'8'}" >验证码登录</a>
+    </div>
+  </div>
+  <footer>
+    <p class="f-loginp">其他登录方式</p>
+    <div class="f-icons">
+      <a href="javascript:;" onclick="qqLogin();return false;" name="WAP_login_password_QQ"><img src="https://res.suning.cn/project/passport/login/wapV8/images/icon_qq.png" alt="" sa-data="{'eleid':'5'}"></a>
+      <a href="javascript:;" onclick="zfbLogin();return false;" id="zfbLogin"><img src="//res.suning.cn/project/passport/login/wapV8/images/icon_zfb.png" alt=""></a>
+      <a href="javascript:;" onclick="eppLogin();return false;" name="WAP_login_password_yifubao"><img src="https://res.suning.cn/project/passport/login/wapV8/images/icon_epp.png" alt="" sa-data="{'eleid':'6'}"></a>
+      <!--<a href="javascript:;" onclick="cardFirstLogin();return false;"><img src="https://res.suning.cn/project/passport/login/wapV8/images/icon_k.png" alt=""  sa-data="{'eleid':'7'}"></a>-->
+    </div>
+    <p class="f-agree"><span>我同意</span><b>《</b><a href="//csfs.suning.com/privacy.html#/detail?channelId=163488611809858538&navName=%E8%8B%8F%E5%AE%81%E4%BC%9A%E5%91%98%E7%AB%A0%E7%A8%8B" sa-data="{'eleid':'11'}">苏宁易购会员章程</a><b>》</b><b>《</b><a
+        href="https://sale.suning.com/all/regProtocol/yfbxy.html" sa-data="{'eleid':'12'}">易付宝协议</a><b>》</b></p>
+  </footer>
+  <!--注册协议-->
+  <div class="protocol hide">
+    <div class="centerDiv">
+      <div class="title">注册协议</div>
+      <div class="text">
+        <p><span>【审慎阅读】</span>您在申请注册流程中点击同意前，应当认真阅读以下协议。</p>
+        <p><span>请您务必审慎阅读阅读，充分理解协议中相关条款内容，其中包括：</span> </p>
+        <p><span>1.与您约定免除或限制责任的条款；</span></p>
+        <p><span>2.与您约定法律适用和管辖的条款；</span></p>
+        <p><span>3.其他以粗体下划线标识的重要条款。</span></p>
+        <p>如您对协议有任何疑问，可向平台客服咨询。</p>
+        <p><span>【特别提示】</span>当您按照注册页面提示填写信息，阅读并同意协议且完成全部注册程序后，即表示您已充分阅读，理解并接受协议的全部内容。</p>
+        <p><span>阅读协议的过程中，如果您不同意相关协议或其中任何款约定，您应立即停止注册程序。</span></p>
+        <p>
+         <a href="//csfs.suning.com/privacy.html#/detail?channelId=163488611809858538&navName=%E8%8B%8F%E5%AE%81%E4%BC%9A%E5%91%98%E7%AB%A0%E7%A8%8B" target="_blank">《苏宁会员章程》</a>
+          <a href="//sale.suning.com/all/regProtocol/yfbxy.html" target="_blank">《易付宝协议》</a>
+          <a href="//csfs.suning.com/privacy.html#/detail?channelId=163047897905013764&name=%E8%8B%8F%E5%AE%81%E6%98%93%E8%B4%ADAPP%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96&navName=%E8%8B%8F%E5%AE%81%E6%98%93%E8%B4%AD" target="_blank">《苏宁隐私政策》</a>
+		  <a href="//sale.suning.com/all/regProtocol/yfbyszc.html" target="_blank">《易付宝隐私政策》</a>
+        </p>
+      </div>
+      <div class="btns">
+        <a href="javascript:;" class="btn close" onclick="closeAlert()">不同意</a>
+        <a href="javascript:;" class="btn enter" >同意即注册</a>
+      </div>
+    </div>
+  </div>
+	<!-- ----------------二次卡--------------------- -->
+	<!-- 选择弹框 -->
+	<div class="eck-d-w eck-choose hide">
+	<div class="eck-d">
+	  <div class="eck-choose-top">为保障您的账户安全
+		请选择以下操作</div>
+	  <div class="eck-choose-i eck-choose--b1">
+		<div class="eck-choose--f">买过东西</div>
+		<div>验证后登录 ></div>
+	  </div>
+	  <div class="eck-choose-i eck-choose--b2">
+		<div class="eck-choose--f">没买过东西</div>
+		<div>获取验证码注册 ></div>
+	  </div>
+	  <div class="eck-close-icon"></div>
+	</div>
+	</div> 
+	<!-- 输入表单弹框 -->
+	<div class="eck-d-w eck-form hide">
+	<div class="eck-d eck-d-form">
+	  <div class="eck-d-form-t">请输入历史收货人进行验证</div>
+	  <div class="eck-input">
+		<i class="ico-close eck-empty-icon"></i>
+		<input class="changeInput eck-input-value" placeholder="点击输入历史收货人" id="eckName">
+	  </div>
+	  <div class="eck-form--tip"></div>
+	  <div class="eck-d-fail-b eck-d-form-b">
+		<div class="eck-d-fail-bb eck-d-fail-b1">取消</div>
+		<div class="eck-d-fail-bb eck-d-form-b2">验证</div>
+	  </div>
+	</div>
+	</div>
+	<!-- 失败弹框 -->
+	<div class="eck-d-w eck-fail hide">
+	<div class="eck-d eck-d-fail">
+	  <div class="eck-d-fail-t">您今天验证次数已用完，<br>
+		请明天再来或直接注册新账号</div>
+	  <div class="eck-d-fail-b">
+		<div class="eck-d-fail-bb eck-d-fail-b1">取消</div>
+		<div class="eck-d-fail-bb eck-d-fail-b2">注册新账号</div>
+	  </div>
+	</div>
+	</div>
+	<!-- ------------------------------------- --> 
+  <script src="https://res.suning.cn/??public/v5/js/zepto/1.1.4/app.js,public/v5/mod/alertBox/2.0.0/alertBox.js,project/passport/login/wapV5/js/security.min.js,project/passport/login/wapV8/js/newLogin.min.js?v=20201026"></script>
+<script src="https://dt.suning.com/detect/dt/siller.js?v=20200713"></script>
+<script type="text/javascript" src="https://res.suning.cn/javascript/??sn_da/sa-analytics.js,sn_da/sa-functions.js,sn_da/sa_simple.js,sn_pf/agent_js/performance_agent.js?v=20200713"></script>
+<script type="text/javascript" src="//res.suning.cn/project/crdnode/common/suAES.min.js"></script>
+<script src="https://iar-web.suning.com/iar-web/snstatic/SnCaptcha.js"></script>
+<script type="text/javascript">
+    	//登录跳支付宝小程序，环境判断
+	var UA = window.navigator.userAgent;
+	var wapNewAlipayLogin = "0";
+	var g_device = {
+            isApp: UA.match(/SNEBUY-APP;?/i) ? true : false,
+            isNearbyApp: UA.match(/NEARBY-APP;?/i) ? true : false,
+            isBaidu: UA.match(/\s+swan\/[\d\.]+/i) ? true : false, //百度
+            isToutiao: UA.match(/toutiaomicroapp/i) ? true : false, //头条
+			isWeiXin: UA.match(/miniProgram/i) ? true : false, //微信
+            isSamsung: UA.match(/SamsungLifeService/i) ? true :false, //三星
+            isAlipay:UA.match(/AlipayClient?/i)  ? true :false, //支付宝
+            isPP: typeof UA === 'string' && (UA.match(/sminip/)||UA.match(/\bPPTV\b/)||UA.match(/\bPPTVSports\b/) ) ? true :false //pp体育
+		};
+	if( wapNewAlipayLogin == '0' || (g_device.isApp || g_device.isNearbyApp || g_device.isBaidu || g_device.isToutiao || g_device.isWeiXin || g_device.isSamsung || g_device.isAlipay || g_device.isPP)) {
+		document.getElementById('zfbLogin').style.display = 'none';
+	}
+	//关闭短信验证码标识
+	var notUseSmsLogin = "0";
+	var iar;//要初始化的验证码实例
+	var iarTicket;
+	var iarToken;
+	var trust_redirect = "";
+	trust_redirect = trust_redirect.replaceAll('&amp;','&');
+        function goIosToback(){
+		   window.history.go(-1);
+		}
+		//关闭注册框
+		function closeAlert(){
+			$('.protocol').addClass('hide')
+		}
+		// 提示  
+		function alertBox(str, delay, callback) {
+			AlertBox({
+				type: "mini",
+				delay: delay ? delay : 3000,
+				msg: str,
+				callback: callback
+			});
+		};
+
+		function alertBox2(data){
+			var params = {
+			type: 'doubleBtn',
+			title: '',
+			msg: '',
+			cancelText: '取消',
+			confirmText: '确定',
+			confirm: function(){},
+			cancel: function(){
+				$('body').off('touchmove');
+			},
+			callback: function(){
+				$('div[id^=alertMask_]').css('height', '100%').css('background', 'rgba(0, 0, 0, 0.7)');
+				$('body').on('touchmove', function (e){
+					e.preventDefault();
+				});
+			}
+		   };
+				$.extend(params, data);
+				AlertBox(params);
+	    }
+		//去掉空格
+		String.prototype.Trim = function(){
+			return this.replace(/\s+/g, "");
+		}
+	
+		//添加cookie
+		var addCookie = function(objValue,objHours){      //添加cookie
+			objValue =  encodeURI(objValue);
+			var arrStr = document.cookie.split(";");
+			var flag =false;
+			for(var i = 0;i < arrStr.length;i++){
+				var temp = arrStr[i].split("=");
+				if(temp[0].trim() == "name" && temp[1] != null && temp[1].indexOf(objValue) !=-1 ){
+					flag = true;
+				}
+			}
+			if(flag == true) return;
+			for(var i = 0;i < arrStr.length;i++){
+				var temp = arrStr[i].split("=");
+				if(temp[0].trim() == "name" && flag == false ){
+					objValue = temp[1] + ','+ objValue;
+				}
+			}
+			var str = "name=" + objValue;
+			if(objHours > 0){//为时不设定过期时间，浏览器关闭时cookie自动消失
+				var date = new Date();
+				var ms = objHours*3600*1000;
+				date.setTime(date.getTime() + ms);
+				str += ";expires=" + date.toGMTString();
+			}
+			document.cookie =  str;
+		}
+
+		if (navigator.userAgent.match(/SNEBUY-APP/i)) {
+			$('#wapSnNavId').hide();
+		}
+
+		// 图片验证码输错三次才刷新
+		var gImgVerCdeErrorCount = 0;
+		// 密码错误次数
+		var accountPwdErrorCount = 0;
+		var loginPBK="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQComqoAyvbCqO1EGsADwfNTWFQIUbm8CLdeb9TgjGLcz95mAo204SqTYdSEUxFsOnPfROOTxhkhfjbRxBV4/xjS06Y+kkUdiMGFtABIxRQHQIh0LrVvEZQs4NrixxcPI+b1bpE0gO/GAFSNWm9ejhZGj7UnqiHphnSJAVQNz2lgowIDAQAB";
+		var msiPublicKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJE0LwCI7Ep5qrXaCcvr5oq62FEr6Tve8CxW2CI1wOMBMlD8rcKhg4DXVFV+Q3k1Tc1zFXHNUWjAfrbUWOjxyRcVGcq+aI87cEYIU8uCqT/49+EK9FsGR6ZJwvvjyT/DogRsnYMkVBG8IhjdYO9Lhonvl1+wvMuQxSXdKWZIVCqQIDAQAB";
+		var ascPublicKey="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGIJ8Lzt5hI1eilBEt7iBwrhYxeShwRE6kpn1WrcYM+w/F2/XABitbtHffoELKJvz5DSGwyaB8CP11cJPUQ1Sy8bsaHarJLS+EsLdXMvli/H+qW48B9mnGRiccvzFR0rJ6lgZI1t+E3CHNyfh7SBPea6qvMVqOO3A2qBj6i9z5/wIDAQAB";
+		// 注册协议是否是第一次登录返回不存在后弹出的
+		var protAfterLogin = true;
+		var smsToken_global;
+		// needVerifyCode:表示是否需要输入验证码
+	    var needVerifyCodeVal=false;
+	    var isIarVerifyCode=false;
+		var isUseSlideVerifycode=true;  
+		var slideVerifycode="";
+		// 获取到的目标地址  将请求路径中的&amp; 替换为 &
+		var service = "https://aq.suning.com/asc/auth?targetUrl=https://m.suning.com/";
+		    service = service.replaceAll('&amp;','&');
+		    
+    var ssojbossValue = {smsTicket:"",loginTicket:"",riskType:""};
+    var ssojbossConstant = {rdsyAppCode:"9FAD2DDEFE754D604779F7BB8264C80F",stepFlag:"8763EC7BB5D7EEE18EDD1E4BD59A1679",
+        stepTwoFlag:"3D58885D2B0CB135703770C03852E8CB", rdsySceneId:"PASSPORT",stepThreeFlag:"08DD83216388DA0A29B5B3CEE0CC0E6F",channel:"PC",
+        checkAccountKey: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOuozMgVH/glMcCOIDKjXP83zDmgi6hKvwB9VLQG6RWcxm/lNmB/Uq3LGdKUnm+JBFy1GeHA8oNKLFROF/ebzSqr6kOkuSsAZmcvsvgaigD7cSzIipdfJpE3bZd9y7X8Mq+uDhNKpvlH9lR+OmTgMFAKq8w6QMYY+ksHjWINSDIwIDAQAB",
+        rdsyKey:"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZnlkciI+qxNATzQOOcU8rxtfJxlbjRKEhoz1WhuAFuCe6ZHEh85UjGiG0FN0oBCKoC4aprTlzNDEr/cU2bzTJELhs9xoU80Um364GY0zbMr1qnnSouyv0Wb/sgrB/cTDmw8HNiX77mCmX+R4Un/6Xj3BBpm52CHn3RXI9HeE/xwIDAQAB"};
+    var ssojbossUtil = {
+        rsaEncryptString(encryptString, key){
+            var phoneNumberRsa = "";
+            try {
+                var rsaEncrypt = new JSEncrypt();
+                rsaEncrypt.setPublicKey(key);
+                phoneNumberRsa=rsaEncrypt.encrypt(encryptString);
+            } catch (exception) {
+            }
+            return phoneNumberRsa;
+        },
+        hideAllVerifyCode(){        //隐藏所有的验证码
+	$("#iarUsername").hide();
+        $("#iarUsernamedx").hide();
+        $(".iarVerifyCode").hide();
+            $(".sillerVerifyCode").hide();
+            $(".imageVerifyArea").hide();
+        },
+        initSwitch(){
+            $(".login_switch_btn_box").on("click", function () {
+                ssojbossUtil.hideAllVerifyCode();
+                var userLoginType = $(".login-content2").hasClass("hide");  //短信登录
+                if(userLoginType){
+                    $("#phoneNum").focus();
+                    $("#phoneNum").blur();
+                }else {
+                    $("#username").focus();
+                    $("#username").blur();
+                }
+            });
+        },
+        judgeVerifyType(riskType,showIarFlag){
+            if(riskType=='isIarVerifyCode'){
+                isIarVerifyCode=true;
+                needVerifyCodeVal = true;
+                if(showIarFlag){
+                showAndHideVerifyCode(needVerifyCodeVal,isIarVerifyCode);
+            }
+            }else if(riskType=='isSlideVerifyCode'){
+                isUseSlideVerifycode=true;
+                needVerifyCodeVal = true;
+                showAndHideVerifyCode(needVerifyCodeVal,isUseSlideVerifycode);
+            }else if(riskType=='isImgVerifyCode'){
+                needVerifyCodeVal = true;
+                isUseSlideVerifycode = false;
+                showAndHideVerifyCode(needVerifyCodeVal,isUseSlideVerifycode);
+            }else if(riskType=='isNullVerifyCode'){
+                this.hideAllVerifyCode();
+            }
+        }
+    };
+		var getRequestParam = function(){
+    	   var url = location.search; //获取url中"?"符后的字串   
+    	   var theRequest = new Object();   
+    	   if (url.indexOf("?") != -1) {   
+    	      var str = url.substr(1);   
+    	      strs = str.split("&");   
+    	      for(var i = 0; i < strs.length; i ++) {   
+    	         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);   
+    	      }   
+    	   }   
+    	   return theRequest;   
+    	};
+		
+		var getDetect = function(){
+		    try{
+			return bd.rst({ 'scene' : '1' })
+		    }catch(exception){
+			return "passport_detect_js_is_error";
+		    }
+		}
+		//终端
+		var getTerminal= function(){
+			return 'WAP';
+		}
+		//渠道号
+		var getChannel = function(){
+			var createChannel = getQueryVariable("createChannel");
+        		return createChannel != "" ? createChannel : '208000200011';
+		}
+		//来源编号
+		var getCreateSource = function(){
+			return getQueryVariable("createSource");
+		}
+	
+		//分公司
+		var getBranch = function(){
+			return getQueryVariable("branch");
+		}
+	
+		//门店
+		var getStore = function(){
+			return getQueryVariable("store");
+		}
+		// 去注册
+		var goToReg = function() {
+			var Request = new Object();
+		    Request = getRequestParam();
+		    var userTargetUrl = "?loginTheme=wap_new&service=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F".split("targetUrl%3D")[1];
+		    var custSource = Request['custSource'];
+		    var freeToReg_URL = srs_prefix_domain + "wap/person.do";
+		    if(userTargetUrl){
+		    	freeToReg_URL  = freeToReg_URL + "?myTargetUrl="+decodeURIComponent(userTargetUrl);
+		    	if(custSource){
+		    		freeToReg_URL = freeToReg_URL + "&custSource=" + custSource;
+		    	}
+		    }else{
+		    	if(custSource){
+		    		freeToReg_URL = freeToReg_URL + "?custSource=" + custSource;
+		    	}
+		    }
+		    window.location.href = freeToReg_URL;
+		}
+		//企业注册
+		function goToQYReg(){
+		    window.location.href = srs_prefix_domain+"srs-web/wap/companystep1.do";
+		}
+		
+		function randomNum(){ 
+			var t=''; 
+		   for(var i=0;i<3;i++){ 
+			 t=t+Math.random()*10; 
+			} 
+		   return t;
+        } 
+		//联系客服  getDfpToken();
+		function goToKF(){
+			var dfpToken=Cookies.getCookie("login_KF");
+			if(!dfpToken){
+			  dfpToken= (new Date()).valueOf()+randomNum();
+				Cookies.setCookie("login_KF", dfpToken, 24)
+			}
+			try {
+			        var rsaEncrypt = new JSEncrypt();
+					rsaEncrypt.setPublicKey(msiPublicKey);
+					var encryDeviceId=rsaEncrypt.encrypt(dfpToken);
+				} catch (exception) {
+				    encryDeviceId = "";
+			}
+			
+				$.ajax({
+					type : 'GET',
+					url: nmqs_prefix_domain+"customer/customerVistor.do?encryDeviceId="+encryDeviceId,
+					contentType: "application/x-www-form-urlencoded",
+					dataType : 'jsonp',
+					jsonp : 'callback',
+					jsonpCallback:"callback",
+					success: function(data){
+						if(data!=null && data!="" && data.status=="success"){
+						   window.location.href =data.skipUrl;
+						}else{
+						   alertBox(data.msg,2000);
+						}
+					},
+					error: function(jqXHR) {
+						alertBox(jqXHR.status,2000);
+					}
+				});
+	
+		}
+	    
+		// 找回密码
+		var goForgetPwd = function() {
+		    var username = $('#username').val().Trim();
+			username=ascencrypt(username);
+			var _targetUrl_ = "?loginTheme=wap_new&service=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F".split("targetUrl%3D");
+			if(_targetUrl_[1]){
+				window.location.href = asc_prefix_domain + "wap/forgetpsw/show_0.do?username="+username+"&nextTargetUrl="+_targetUrl_[1];
+			}else{
+				window.location.href = asc_prefix_domain + "wap/forgetpsw/show_0.do?username="+username;
+			}	
+		}
+		//安全中心加密
+		function ascencrypt(username){
+		   if(typeof window.JSEncrypt == undefined){
+		      return username
+		   }
+		    try {
+			        var rsaEncrypt = new JSEncrypt();
+					rsaEncrypt.setPublicKey(ascPublicKey);
+					var username2=rsaEncrypt.encrypt(username);
+					return username2;
+				} catch (exception) {
+				    return username;
+			}
+		}
+		// qq登陆
+		var qqLogin = function(){
+			var qq="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101224012&redirect_uri=https%3A%2F%2Fpassport.suning.com%2Fids%2Flogin%3Foauth_provider%3DWapQQProvider%26loginTheme%3Dwap_new%26agentType%3Dwap&state=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F";
+			
+			//var remVal = $(".auto-login .sn-checkbox").prop("checked");
+			//if(remVal) {
+				qq = qq.substring(0, qq.indexOf("&state=")) + encodeURIComponent("&rememberMe=true") + "&state=state";
+			//}
+			//if(service.length>0){
+			//	var b = qq.indexOf("&state=");
+			//	location.href= qq.substring(0,b) +"&state="+encodeURIComponent(service);
+			//}else{
+			//	location.href=qq;
+			//}
+			var b = qq.indexOf("&state=");
+			location.href= qq.substring(0,b) +"&state="+encodeURIComponent(goUrl);
+		}
+		// 跳转支付宝小程序
+		var zfbLogin = function(){
+			window.location.href="//render.alipay.com/p/s/i/?scheme="+encodeURIComponent('alipays://platformapi/startapp?appId=2021001162636372&page=/pages/index/index');
+		}
+		// epp登陆
+		var eppLogin = function(){
+			var epp ="https://paypassport.suning.com/ids/oauth20/authorize?client_id=suning_01&response_type=code&redirect_uri=https%3A%2F%2Fpassport.suning.com%2Fids%2Flogin%3Foauth_provider%3DEppProvider&state=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F";
+			if(epp.indexOf("&state=") > -1) {
+				epp = epp.substring(0, epp.indexOf("&state=")) ;
+			}
+			
+			var remVal = $(".auto-login .sn-checkbox").prop("checked");
+			if(remVal) {
+				epp += encodeURIComponent("&rememberMe=true");
+			}
+			
+			//epp += encodeURIComponent("&agentType=wap") + "&state=state";
+			epp += encodeURIComponent("&agentType=wap") + "&state="+encodeURIComponent(goUrl);
+			if(service.length > 0) {
+				var b = epp.indexOf("&state=");
+				epp = epp.substring(0,b) +"&state="+encodeURIComponent(service);
+			}
+			epp += "&theme=wap"
+			location.href = epp;
+		}
+		// 会员卡
+		function cardFirstLogin(){
+			location.href= srs_prefix_domain + "wap/offlinecardlogin.do";
+		}
+		// 从浏览器获取cookies
+		var getPPTVCookie = function(cookieName) {
+			var arrStr = document.cookie.split("; ");
+			for(var i = 0;i < arrStr.length;i ++){
+				var temp = arrStr[i].split("=");
+				if(temp[0] == cookieName){
+					return unescape(decodeURI(temp[1]));
+				}
+			}
+			return "";
+		}
+		// 检测pptv的cookies信息，做信任跳转
+		var checkPptvCookie = function() {
+			//pptv未绑定的标记
+			var pptvbinding = getPPTVCookie('pptv_user_not_binding');
+			if ( pptvbinding!=null && pptvbinding!=""){
+				//保存是从哪里请求的路径  将请求路径中的&amp; 替换为 &
+				var serviceStr=decodeURIComponent("https://aq.suning.com/asc/auth?targetUrl=https://m.suning.com/");
+				//已解码
+				var targetUrl = serviceStr.substring(serviceStr.indexOf("targetUrl") + 10);
+			    //跳转
+				window.location.href = srs_prefix_domain + "wap/thirdPartyBind.do?providerType=WapPPTVProvider&bindingTicket="+pptvbinding+"&targetUrl="+targetUrl;
+			}
+		}
+		    
+		//初始化显示图片验证码是否显示
+		function initShowVerifyCode(){
+			showAndHideVerifyCode(needVerifyCodeVal,isUseSlideVerifycode||isIarVerifyCode);
+		}
+		//显示隐藏验证码  if(isUseSlideVerifycodeVal && $('.tel_inputBox').val()){
+		function showAndHideVerifyCode(isNeedVerifyCodeVal,isVerifycodeVal){
+                        ssojbossUtil.hideAllVerifyCode();
+        		var userLoginType = $(".login-content2").hasClass("hide");  //短信登录
+			if(isNeedVerifyCodeVal){
+			    if(ssojbossValue.riskType=='isIarVerifyCode'){
+            isIarVerifyCode=isVerifycodeVal;
+            isUseSlideVerifycode=false;
+        }else if(ssojbossValue.riskType=='isSlideVerifyCode'){
+            isUseSlideVerifycode=isVerifycodeVal;
+            isIarVerifyCode=false;
+        }
+        if(isIarVerifyCode){
+            iarToken="";
+            $("#iar1").empty();
+            $(".sillerVerifyCode").hide();
+            $("#iarUsername").show();
+            //短信图片验证码
+            $("#iar1dx").empty();
+            $("#iarUsernamedx").show();
+            //判读初始化那个滑块
+            if(!userLoginType){
+                initIar('iar1');
+            }else{
+                initIar('iar1dx');
+            }
+	    
+        }else if(isUseSlideVerifycode){
+	   slideVerifycode="";
+                			if(userLoginType){  //短信登录
+                    			initSiller('siller1', sillerCallback);
+                		}else {     //账密登录
+                    			initSiller('siller2', sillerCallback);
+                		}
+				$(".sillerVerifyCode").show();
+		    	}else{
+		    		$(".imageVerifyArea").show();
+					fun_getVcode();
+		    	}
+			}else{
+		    		ssojbossUtil.hideAllVerifyCode();
+			}
+		}
+
+function initIarTicket(){
+    var userNameVal;
+    var userLoginType = $(".login-content2").hasClass("hide");//短信登录
+    if(!userLoginType){
+        userNameVal=$('#username').val();
+    }
+    console.log("username",userNameVal);
+    $.ajax( {
+        type : 'POST',
+        url : 'iarVerifyCodeTicket',
+        async: false,
+        data : 'username='+encodeURIComponent(userNameVal),
+        dataType : 'json',
+        success : function(data) {
+            if(data && data.result){
+                iarTicket = data.ticket;
+            }
+        },
+        error : function(data) {
+
+        }
+    });
+}
+function initIar(id){
+    if(!iarTicket){
+        initIarTicket();
+    }
+    iar = SnCaptcha.init({
+        id:id,//任意值均可
+        env : 'prd', //环境sit,xgpre,prd
+        type : 'popup',//方式插入按钮式
+        target : id, //验证码按钮插入的div的id，必填
+        ticket : iarTicket, //通过注册服务获取的ticket
+        width : '250px', //按钮或者滑块宽度（必填)
+        height : '40px', //滑块或按钮高度(必填，且必须用具体数值，禁止使用百分比)
+        disableClose: true,
+        callback : function(token) { //回调函数
+            //console.log(token);
+            iarToken=token;
+            //TODO
+            var userLoginType = $(".login-content2").hasClass("hide");//短信登录
+            if(userLoginType){
+				needSecCard();
+                //ajaxSmsLogonSendCode();
+            }else{
+                ajaxLogonSubmit();
+            }
+
+        }
+    });
+}
+		//图片验证码框中焦点移除的时候，进行提示
+		function checkValidateCodeOnSubmit(sendCodeFlag,loginFlag){
+		     console.log("loginFlag = " + loginFlag);
+    console.log("isIarVerifyCode = " + isIarVerifyCode);
+    if(isIarVerifyCode){
+        //如果是获取短信验证码的操作，需要清空拼图验证码的token
+        if(sendCodeFlag==undefined){
+            if(isIarVerifyCode){
+                iarToken = "";
+                return true;
+            }
+        }
+        if(loginFlag==undefined){
+            return true;
+        }
+
+        if(iarToken==null || iarToken=="" || !iar.queryStatus()){
+            alertBox("为了你的账户安全，请完成拼图验证。",2000);
+            return false;
+        }else{
+            return true;
+        }
+    }else if(isUseSlideVerifycode){
+				if (siller.status == 0 || null == slideVerifycode || slideVerifycode == "" ) {
+					alertBox("为了你的账户安全，请拖动滑块完成验证。",2000);
+					return false;
+				}else{
+					//已经完成滑动验证
+					return true;
+				}
+	    	}else{
+				var vcd = $('.verifyCode:visible').val();
+	    		if (vcd == null || vcd == "") {
+				alertBox("请输入验证码",2000);
+				return false;
+			    }else if(vcd.length == 4){
+					//没有在提交中的时候进行提交操作  4个长度的时候需要是字符数字， 3个长度的时候需要是汉字
+					return true;
+				}
+			    else{
+					alertBox("验证码不正确，请重新输入",2000);
+					return false;
+				}
+	    	}
+		}
+
+		//图片验证码的异步校验
+		//isSubmit：是否进行提交 true：表示验证成功之后进行提交操作 ； false：表示仅仅进行验证
+		function ajaxCheckVerifyCodeOrSubmit(isSubmit) {
+			var vcd = $('.verifyCode:visible').val();
+			if(isIarVerifyCode){
+        if(iarToken==null || iarToken=="" || !iar.queryStatus()){
+            //TODO
+            initIar('iar1');
+        }else{
+            //进行提交操作
+            var userLoginType = $(".login-content2").hasClass("hide");//短信登录
+            if(userLoginType){
+                ajaxSmsLogonSubmit();
+            }else{
+                ajaxLogonSubmit();
+            }
+        }
+    }else if(isUseSlideVerifycode){
+				if (siller.status == 0 || null == slideVerifycode || slideVerifycode == "" ) {
+					alertBox("为了你的账户安全，请拖动滑块完成验证",2000);
+					return false;
+				}else{
+					//进行提交操作
+					ajaxLogonSubmit();
+				}
+			}else if(vcd.length==4){	
+			  var param = "code=" + vcd + "&uuid=" + "fd6e9948-b5be-44f8-a270-5614409fb7c1" + "&delFlag=0";
+				$.ajax({
+					//请求类型
+					type : 'POST',
+					//发送验证请求的url
+					//url : "https://vcs.suning.com/vcs/validate_jsonp.htm",
+					url : 'https://vcs.suning.com/vcs/validate_jsonp.htm?',
+					//请求时所传参数
+					data : param,
+					//返回数据类型
+					dataType : 'jsonp',
+					//回调函数方法名
+					jsonp : 'callback',
+					//请求成功后的回调函数
+					success : function(data) {
+						//显示验证结果
+						if(data[0].result == 'true'){
+							result = true;
+							//进行提交操作
+							ajaxLogonSubmit();
+							var userLoginType = $(".login-content2").hasClass("hide");  //短信登录
+							if(userLoginType){
+								needSecCard();
+								//ajaxSmsLogonSendCode();
+							}
+						}else{
+							alertBox("验证码错误！",2000);
+							$('.verifyCode').val('');
+							gImgVerCdeErrorCount++;
+							if (gImgVerCdeErrorCount >= 3) {
+								gImgVerCdeErrorCount=0;
+								fun_getVcode();
+							}
+						}
+					}
+				});
+	    	}else{
+				alertBox("验证码格式不正确，请重新输入",2000);
+				return false;
+			}
+		}
+		
+		//是否显示图片验证码
+		var checkShowImageCode = function (){
+			var logonIdval = $('#username').val();
+			if(logonIdval!= ''){
+				userNameBlur("#username",'');
+			}
+		}
+		//是否显示图片验证码
+		var checkShowImageCodeSmsLogin = function (){
+			var logonIdval = $('#phoneNum').val();
+			if(logonIdval!= ''){
+				userNameBlur("#phoneNum",'');
+			}
+		}
+		
+		//异步是指动态验证码是否显示
+		function userNameBlur(o,v){
+			if ($(o).val() == ''|| $(o).val() == v){
+			}else{
+				var userNameVal=$(o).val();
+				userNameVal = userNameVal.Trim();
+            var userLoginType = $(".login-content2").hasClass("hide");
+            if(userLoginType){ //短信登录
+
+                var param = {
+                    sceneId : 'PASSPORT',
+                    stepFlag : ssojbossConstant.stepFlag,
+                    appCode : ssojbossConstant.rdsyAppCode,
+                    data:{
+                        ways:'duanxindl',
+                        channel:'WAP',
+                        orderChannel:getChannel(),
+                        dfpToken:getDfpToken(),
+                        detect:getDetect(),
+                        loginTheme:"wap_new",
+                        referenceURL:window.location.href,
+                        userName:userNameVal,
+                        cntctMobileNum:userNameVal,
+                        mode:'1',
+                        subMode:'11'
+                    }
+                };
+
+                var encodeData=SuAES.encrypt(JSON.stringify(param));
+                var _postData = {_x_rdsy_block_:encodeData};
+	    	$.ajax( {
+                    type : 'GET',
+                    url  : rdsy_prefix_domain + 'rdsy/needVerifyCode.do',
+                    data : _postData,
+                    dataType : 'jsonp',
+                    timeout:5000,
+                    jsonpCallback:"needVerifyCode",
+                    success : function(data){
+                        if(data!=null && data._x_rdsy_resp_!=null){
+                            var req = JSON.parse(SuAES.decrypt(data._x_rdsy_resp_));
+                            console.log("needVerifyCode===>",req);
+                            needVerifyCodeVal = false;
+                            if(req.status=='COMPLETE'){
+                                ssojbossValue.smsTicket=req.data.ticket;
+                                ssojbossValue.riskType=req.data.riskType;
+
+                                ssojbossUtil.judgeVerifyType(req.data.riskType,false);
+                                if(clicktag2){
+                                    $('.getYzm').removeClass('color-o');
+                                    getYzm();
+                                    clicktag2 = 0;
+                                }
+                            }else{
+                                showErrorInfo(req.msg);
+                                clicktag2 = 0;
+                            }
+                        }
+                    },
+                    error : function(data){
+                        console.error(data);
+                        clicktag2 = 0;
+                    }
+                });
+
+            }else{
+                $.ajax( {
+                    type : 'POST',
+                    url : 'needVerifyCode',
+                    data : 'username='+encodeURIComponent(userNameVal)+'&detect='+getDetect()+'&version=3.0&dfpToken='+getDfpToken()+'&terminal='+getTerminal()+'&loginChannel='+getChannel()+"&loginTheme=wap_new",
+                    dataType : 'json',
+                    success : function(data) {
+                        if(data && data.needVerifyCode){
+                            needVerifyCodeVal=true;
+                            isUseSlideVerifycode=data.isUseSlideVerifycode;
+			    isIarVerifyCode=data.isIarVerifyCode;
+                            //fun_getVcode();
+			if(!isIarVerifyCode){
+                            showAndHideVerifyCode(needVerifyCodeVal,isUseSlideVerifycode||isIarVerifyCode);
+                        }
+
+                        }else if(data && !data.needVerifyCode){
+                            needVerifyCodeVal=false;
+                            isUseSlideVerifycode=false;
+			    isIarVerifyCode=false;
+                            showAndHideVerifyCode(needVerifyCodeVal,null);
+                        }
+                    },
+                    error : function(data) {
+                    }
+                });
+			}
+
+        	}
+	    };
+		
+		//刷新验证码
+		function fun_getVcode() {
+			$(".codeNumImg:visible").find(".vcodeimg").attr("src",'https://vcs.suning.com/vcs/imageCode.htm?uuid=fd6e9948-b5be-44f8-a270-5614409fb7c1&sceneId=logonImg&yys=' + new Date().getTime()+'');
+			$('.verifyCode').val('');
+			if(!isUseSlideVerifycode){
+				$(".getYzm").removeClass('color-o');
+			}
+		}
+
+		
+		// 获取目标地址
+		function getTargetUrl(){
+			var _targetUrl_ = "?loginTheme=wap_new&service=https%3A%2F%2Faq.suning.com%2Fasc%2Fauth%3FtargetUrl%3Dhttps%3A%2F%2Fm.suning.com%2F".split("targetUrl%3D");
+			return _targetUrl_[1];
+		}
+	//错误次数累计 累计超过2次提示反馈问题
+	var errorCount = 0;
+	//noAliasName uncategorized badCredentials serviceNotAvailable E0000001 E4700013 E4700000 E4700464 E4700A37
+	function errorCountHandle(errorMessage){
+		if(errorCount >= 2){
+			errorCount = 0;
+			
+			alertBox2({
+                    msg: errorMessage,
+                    cancelText: '确定',
+                    confirmText: '反馈问题',
+                    confirm: function(){goFeedbackQuestion()}
+                });
+			
+			return true;
+		}
+		errorCount = errorCount + 1;
+		return false;
+	}
+	
+	function goFeedbackQuestion(){
+		window.location = "https://qss.suning.com/45caa.htm";
+	}
+		//显示服务器返回的错误信息
+		function showServerErrorMsg(data) {
+			
+			if(isUseSlideVerifycode){
+				slideVerifycode = "";
+				initSiller('siller2', sillerCallback);
+			}
+			var errorCode= "";
+			if(isNotEmpty(data) && isNotEmpty(data.errorCode)){
+				errorCode = data.errorCode;
+				
+			}
+			var errorMessage="" ;
+			if(isNotEmpty(data) && isNotEmpty(data.errorMessage)){
+				errorMessage = data.errorMessage;
+			}
+			var remainTimes ="";
+			if(isNotEmpty(data) && isNotEmpty(data.remainTimes)){
+				remainTimes = data.remainTimes;
+			}
+			var snMemberErrorCode = "";
+			if(isNotEmpty(data) && isNotEmpty(data.snMemberErrorCode)){
+				snMemberErrorCode = data.snMemberErrorCode;
+			}
+			var logonId = "";
+			if(isNotEmpty(data) && isNotEmpty(data.username)){
+				logonId = data.username;
+			}else{
+				logonId = $('#username').val();
+				logonId = logonId.Trim();
+			}
+			var offlineMemberId = "";
+			if(isNotEmpty(data) && isNotEmpty(data.offlineMemberId)){
+				offlineMemberId = data.offlineMemberId;
+			}
+			//snMemberErrorCode中的错误提示信息
+			if(snMemberErrorCode=="E4700440" || errorCode=="E4700440" ||
+					 snMemberErrorCode=="E4700456" || errorCode=="E4700456" ||
+					 snMemberErrorCode=="E4700A37" || errorCode=="E4700A37" ){
+				//errorMessage = "您输入的账号不存在，请重新输入";
+				//alertBox(errorMessage,2000);
+				//sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				alertBox2({//TODO:
+                msg: '账号不存在，您可以',
+                cancelText: '取消',
+                confirmText: '验证码登录',
+                confirm: function(){
+									$(".login-content2").addClass('hide');
+										$(".login-content").removeClass('hide');
+										$(".qyzc").removeClass('hide');
+                }
+            });
+				return;
+			}else if(snMemberErrorCode=="E4700451" || errorCode=="E4700451"){
+				//存在多个会员卡（重复卡）	会员卡异常，请至门店更换会员卡！
+				errorMessage = "会员卡异常，请至门店更换会员卡！";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700464" || errorCode=="E4700464"){
+				//您的会员账号出现异常，请联系4008-365-365！
+				errorMessage = "您的会员账号出现异常，请联系4008-365-365！";
+			if(errorCountHandle(errorMessage)){
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700480" || errorCode=="E4700480"){
+				//卡类型为非个人卡类型（公司卡）	非个人卡会员暂不提供线上验证功能！
+				errorMessage = "非个人卡会员暂不提供线上验证功能！";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700000" || errorCode=="E4700000"){
+				errorMessage = "不好意思，系统繁忙，请稍后再试！";
+			if(errorCountHandle(errorMessage)){
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700013" || errorCode=="E4700013"){
+				errorMessage = "不好意思，系统繁忙，请稍后再试！";
+			if(errorCountHandle(errorMessage)){
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700450" || errorCode=="E4700450"){
+				errorMessage = "会员资料不完整您的会员卡资料不完整，为保证您的账户安全，请携带会员卡及有效证件到就近门店补全资料！";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700443" || errorCode=="E4700443"){
+				errorMessage = "您的会员卡已被锁定，请联系4008-365-365进行解锁。";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700B03" || errorCode=="E4700B03"){
+				//E4700B03 会员卡首次登陆
+				var jumpUrl = srs_prefix_domain + "wap/offlinecardlogin.do?cardInfo="+logonId;
+				window.location.href = jumpUrl;
+				return;
+			}else if(snMemberErrorCode=="E4700N07" || errorCode=="E4700N07"){
+				//E4700N07手机号存在多个会员
+				var jumpUrl = srs_prefix_domain + "wap/offlinecardlogin.do?cardInfo="+logonId;
+				window.location.href = jumpUrl;
+				return;
+			}else if(snMemberErrorCode=="E4700N11" || errorCode=="E4700N11"){
+				//E4700N11 手机为团体会员的联系人手机，不能登录
+				errorMessage = "您输入的账号不存在，请重新输入";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E4700487" || errorCode=="E4700487"){
+				//E4700487  非个人会员卡不能绑定易购
+				errorMessage = "非个人会员卡暂不提供线上登录验证";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(snMemberErrorCode=="E0000001" || errorCode=="E0000001"){
+				errorMessage = "不好意思，系统繁忙，请稍后再试！";
+			if(errorCountHandle(errorMessage)){
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}
+
+			//errorCode类型的错误提示信息
+			if(errorCode=="badVerifyCode"){
+				errorMessage = "验证码不正确，请重新输入";
+				alertBox(errorMessage,2000);
+				return;
+			}else if(errorCode=="hkAccountNotAvailable"){
+				errorMessage = "该账号为香港苏宁用户，暂不支持在苏宁易购登录";
+				alertBox(errorMessage,2000);
+				return;
+			}else if(errorCode=="badIARVerifyCode"){
+			        errorMessage = "为了你的账户安全，请拖点击按钮完成验证";
+			        showErrorInfo(errorMessage);
+			        return;
+			}else if(errorCode=="badSlideVerifyCode"){
+				errorMessage = "为了你的账户安全，请重新拖动滑块完成验证。";
+				alertBox(errorMessage,2000);
+				return;
+			}else if(errorCode=="needVerifyCode"){
+				if(date.isUseSlideVerifycode){
+					errorMessage = "为了你的账户安全，请重新拖动滑块完成验证。";
+					alertBox(errorMessage,2000);
+				}else if(date.isIarVerifyCode){
+			            needVerifyCodeVal=true;
+			            isUseSlideVerifycode=data.isUseSlideVerifycode;
+			            isIarVerifyCode=data.isIarVerifyCode;
+			            initIar('iar1');
+				}else{
+					errorMessage = "请输入验证码！";
+					alertBox(errorMessage,2000);
+				}
+				return;
+			}else if(errorCode=="badPassword.msg1"){
+				accountPwdErrorCount++;
+				if(accountPwdErrorCount > 1){
+					alertBox2({
+						msg: '用户名密码不正确',
+					    cancelText: '确定',
+					    confirmText: '忘记密码',
+					    confirm: function(){goForgetPwd();}
+					});
+				}else{
+					errorMessage ="您输入的账户名与密码不匹配，请重新输入";
+					alertBox(errorMessage,2000);
+					sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				}
+				$('#password').val('');
+				return;
+			}else if(errorCode=="badPassword.msg2"){
+				errorMessage ="密码错误，您还有"+remainTimes+"次输入机会，机会用完后，您的账号将会被锁定";
+				alertBox(errorMessage,2000);
+				$('#password').val('');	
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;	
+			}else if(errorCode=="unknownUsername"){
+				//errorMessage = "您输入的账号不存在，请重新输入";
+				//alertBox(errorMessage,2000);
+				//sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				alertBox2({
+					msg: '您还没有注册苏宁易购，您可以',
+					cancelText: '取消',
+					confirmText: '去注册',
+					confirm: function(){goToReg();}
+				});
+				return;
+			}else if(errorCode=="lockedBySystem"){
+				if(isDigit(logonId)&&(logonId.length==12)){
+					errorMessage = "您的会员卡已被锁定，请联系4008-365-365进行解锁";
+				}else{
+					errorMessage = "密码错误10次，您可以找回密码，或1小时后再试";
+				}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="lockedByManual"){
+				errorMessage = "您的账号已经被锁定，请联系客服4008-365-365进行解锁";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="notOnlineMember"){
+				//会员卡未绑定
+				var jumpUrl = srs_prefix_domain + "wap/offlinecardlogin.do?cardInfo="+logonId;
+				window.location.href = jumpUrl;
+				return;
+			}else if(errorCode=="imperfectMemberCard"){
+				errorMessage = "您的会员卡资料不完整，为保证您的账户安全，请携带会员卡及有效证件到就近门店补全资料";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode == "CARD_PASSWORD_VERIFY_SUCCESS"){
+				//账号通用逻辑：1.线下账号验证通过；2.线下账号校验不通过，非初始密码；3.线下账号，初始密码
+				// 验证通过
+				var jumpUrl = srs_prefix_domain + "wap/offlinecardlogin.do?cardInfo="+logonId;
+				window.location.href = jumpUrl;
+				return;
+			}else if(errorCode == "CARD_PASSWORD_VERIFY_FAILED"){
+				// 验证不通过
+				var jumpUrl = srs_prefix_domain + "wap/offlinecardlogin.do?cardInfo="+logonId;
+				window.location.href = jumpUrl;
+				return;
+			}else if(errorCode == "CARD_PASSWORD_INITIAL"){
+				// 账号初始密码
+				var jumpUrl = srs_prefix_domain + "wap/offlinecardlogin.do?cardInfo="+logonId;
+				window.location.href = jumpUrl;
+				return;
+			}else if(errorCode == "serviceNotAvailable"){
+				// 当前服务不可用,请稍后再试。
+				errorMessage = "不好意思，系统繁忙，请稍后再试";
+			if(errorCountHandle(errorMessage)){
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&无别名&&ssojboss");
+				return;
+			}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode == "ECARD_UNBIND"){
+				// 团体卡未绑定
+				errorMessage = "非个人会员卡暂不支持登录验证，请至PC端登录";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode == "highRiskAccount"){
+				// 高危用户
+				var _targetUrl_ = "";
+				if(getTargetUrl()){
+					_targetUrl_ = "&nextTargetUrl=" + getTargetUrl();
+				}
+				var jumpUrl = asc_prefix_domain + "wap/highrisk/getinfo_0.do?ticket=" + data.snapshotId + _targetUrl_;
+				window.location.href = jumpUrl;
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&高危用户&&ssojboss");
+				return;
+			}else if(errorCode == "suspectedHighRiskAccount"){
+				// 疑似高危用户
+				var _targetUrl_ = "";
+				if(getTargetUrl()){
+					_targetUrl_ = "&nextTargetUrl=" + getTargetUrl();
+				}
+				var jumpUrl = asc_prefix_domain + "wap/highrisk/getinfo_0.do?ticket=" + data.snapshotId + _targetUrl_;
+				window.location.href = jumpUrl;
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&疑似高危用户&&ssojboss");
+				return;
+			}else if(errorCode == "sopSuspectedHighRiskAccount"){
+				// SOP疑似高危用户
+				errorMessage = "尊敬的商家，请至苏宁云台进行登录";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&SOP疑似高危用户&&ssojboss");
+			}else if(errorCode == "maliciousRegister"){
+				// 恶意注册用户
+				var _targetUrl_ = "";
+				if(getTargetUrl()){
+					_targetUrl_ = "&nextTargetUrl=" + getTargetUrl();
+				}
+				var jumpUrl = asc_prefix_domain + "wap/maliciousreg/getinfo_0.do?ticket=" + data.snapshotId + _targetUrl_;
+				window.location.href = jumpUrl;
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&恶意注册用户&&ssojboss");
+			}else if(errorCode == "suspiciousLogin"){
+				// 异地登陆用户
+				var _targetUrl_ = "";
+				if(getTargetUrl()){
+					_targetUrl_ = "&targetUrl=" + getTargetUrl();
+				}
+				var jumpUrl = asc_prefix_domain + "wap/loginpro/getinfo.do?ticket=" + data.snapshotId + _targetUrl_;
+				window.location.href = jumpUrl;
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&异地登陆用户&&ssojboss");
+			}else if(errorCode == "sopSuspiciousLogin"){
+		        //sop异地登陆用户
+				errorMessage = "尊敬的商家，请至苏宁云台进行登录"
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&sop异地登陆用户&&ssojboss");
+		   	}else if(errorCode == "noAliasName"){
+		   		//无别名
+				errorMessage = "您的资料完善度较低，账号存在安全风险。请至PC端输入aq.suning.com，点击“提交人工审核”";
+			if(errorCountHandle(errorMessage)){
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&无别名&&ssojboss");
+				return;
+			}
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&无别名&&ssojboss");
+		   	}else if(errorCode == "lockedBySelf"){
+		   		//自助锁定
+		   		AlertBox({type:'doubleBtn',msg:'您的账号已申请锁定，暂时无法登录，您可以解锁账号',confirmText:"好",confirm: function () {
+					var _targetUrl_ = "";
+					if(getTargetUrl()){
+						_targetUrl_ = "&nextTargetUrl=" + getTargetUrl();
+					}
+					var jumpUrl = asc_prefix_domain + "wap/lockaccount/show_0.do?ticket=" + data.snapshotId + _targetUrl_;
+					window.location.href = jumpUrl;
+		        }});
+		   	}else if(errorCode == "IllegalArgument"){
+		   		//参数错误
+				errorMessage = "请重新登录";
+				alertBox(errorMessage,2000);
+				return;
+		   	}else if(errorCode == "displayLoginPage"){
+		   		//跳转到登录页，无需报错提示
+				return;
+		   	}else if(errorCode!=""){
+		   		errorMessage = errorMessage!="" ? errorMessage : "不好意思，系统繁忙，请稍后再试！";
+			if(errorCode == "uncategorized" || errorCode == "badCredentials"){
+				if(errorCountHandle(errorMessage)){
+					return;
+				}
+			}
+				alertBox(errorMessage,2000);
+			}
+		}
+		
+		//生成登陆之后的调整路径
+		function getGoUrl(){
+			if (trust_redirect != "" && trust_redirect.length != 0){
+				goUrl = trust_redirect;
+			}else if(service != "" && service.length != 0){
+				var index = service.indexOf("targetUrl=");
+				if(index < 0){
+					goUrl = service;
+				}else{
+					goUrl = decodeURIComponent(service.substring(index+10));
+				}
+			}
+			try{
+				var pattern = /.*?\.(suning|cnsuning|suningcloud|wuliuyun|snjijin)\.(com|cn)$/;
+				var a_goUrl = parseURL(goUrl);  
+				if(!pattern.test(a_goUrl.host)){
+					goUrl = domain_url;
+				}
+			}catch(e){}
+		}
+		function parseURL(url) {
+		    var getGoUrl_a = document.createElement('a');
+		    getGoUrl_a.href = url;
+		    return {
+		        source: url,
+		        protocol: getGoUrl_a.protocol.replace(':', ''),
+		        host: getGoUrl_a.hostname,
+		        port: getGoUrl_a.port,
+		        query: getGoUrl_a.search,
+		        params: (function() {
+		            var ret = {},
+		            seg = getGoUrl_a.search.replace(/^\?/, '').split('&'),
+		            len = seg.length,
+		            i = 0,
+		            s;
+		            for (; i < len; i++) {
+		                if (!seg[i]) {
+		                    continue;
+		                }
+		                s = seg[i].split('=');
+		                ret[s[0]] = s[1];
+		            }
+		            return ret;
+		        })(),
+		        file: (getGoUrl_a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+		        hash: getGoUrl_a.hash.replace('#', ''),
+		        path: getGoUrl_a.pathname.replace(/^([^\/])/, '/$1'),
+		        relative: (getGoUrl_a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+		        segments: getGoUrl_a.pathname.replace(/^\//, '').split('/')
+		    };
+		}
+
+		//登录提交
+		var loginbtnlock = 0;//登录按钮锁
+		function loginSubmitPre(){
+			if (loginbtnlock == 0) {
+		        loginbtnlock = 1;
+		        setTimeout(function(){
+		            loginbtnlock = 0;
+		        }, 1500);
+			if(checkLogonId() && checkPassword()){
+				if(needVerifyCodeVal){
+					 if(checkValidateCodeOnSubmit(false)){
+						ajaxCheckVerifyCodeOrSubmit(true);
+					} 
+				}else{
+					ajaxLogonSubmit();
+				}
+		   }
+		} else {
+		        console.error('请勿重复点击按钮！');
+		        return false;		
+		}
+}
+		
+		//采用ajax方式进行认证请求
+		function ajaxLogonSubmit(){
+			var username = $('#username').val().Trim();
+			var pwd  = $('#password').val().Trim();
+			try {
+				var encrypt = new JSEncrypt();
+				encrypt.setPublicKey(loginPBK);
+				var pwd2 = encrypt.encrypt(pwd);
+				pwd = "";
+		    } catch (exception) {
+		        pwd2 = "";
+		    }
+			var verifyCode = $(".verifyCode:visible").val();
+			var param = {
+					jsonViewType:true,
+					username : username,
+					password : pwd,
+					password2 : pwd2,
+					loginTheme:"wap_new",
+					service:"https://aq.suning.com/asc/auth?targetUrl=https://m.suning.com/",
+					loginChannel:getChannel(),
+					rememberMe: true,
+					client : "app",
+					sceneId : "logonImg",
+					oauth_redirect:"",
+					detect:getDetect(),
+					dfpToken:getDfpToken(),
+                    terminal:getTerminal()
+			};
+			
+			if(needVerifyCodeVal){
+			   if(isIarVerifyCode){
+		            param.uuid = "iarVerifyCode"
+		            param.iarVerifyCode=iar.queryToken();
+		        }else if(isUseSlideVerifycode){
+					param.slideVerifyCode = siller.queryToken();
+		    	}else{
+					param.verifyCode = verifyCode;
+					param.uuid = "fd6e9948-b5be-44f8-a270-5614409fb7c1";
+		    	}
+			}
+			//登陆中
+			getMask();
+			$.ajax( {
+				type : 'POST',
+				url  : 'login',
+				async: false,
+				data : param,
+				dataType : 'json',
+				success : function(data) {
+					if(isNotEmpty(data) && isNotEmpty(data.success) && data.success){
+						// 登录成功，记录登录名
+	                    var name = $("#username").val();
+	                    addCookie(name,1);
+						//进行成功的跳转
+						if(isNotEmpty(data.redirectUrl)){
+							window.location =data.redirectUrl + "&agentType=wap";
+						}else{
+							window.location = goUrl;
+						}
+					}else{
+						//是否显示图片验证码
+						checkShowImageCode();
+						// 关闭遮罩
+						closeMask();
+					//登录失败，清除拼图验证码token
+			                if(isIarVerifyCode){
+			                    iarToken = "";
+			                }
+						//显示报错
+						showServerErrorMsg(data);
+					}
+				},
+				error : function(data) {
+					// 关闭遮罩
+					closeMask();
+					var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+					alertBox(errorMessage,2000);
+				}
+			});
+		}
+		
+		
+		//校验验证码并发送
+		function ajaxVerifyCodeAndSendSmsCode(){
+			var phoneNumber = $('#phoneNum').val().Trim();
+			
+			if (!checkSmsLoginPhone()) {
+				return false;
+			}
+			if(needVerifyCodeVal){
+			    if(isIarVerifyCode){
+		            if(iarToken==null || iarToken=="" || !iar.queryStatus()){
+		                initIar('iar1dx');
+		            }else{
+		                //进行提交操作
+		                iarToken="";
+		                //ajaxSmsLogonSendCode();
+		            }
+		        }else if(isUseSlideVerifycode){
+					if (siller.status == 0 || null == slideVerifycode || slideVerifycode == "" ) {
+						alertBox("为了你的账户安全，请拖动滑块完成验证。",2000);
+						return false;
+					}else{
+						//进行提交操作
+						needSecCard();
+						//ajaxSmsLogonSendCode();
+					}
+				}else{
+					//用户输入的验证码code
+					var code = $('.verifyCode:visible').val();
+					//请求时所传参数
+					var param = {
+							code : code,
+							uuid : "fd6e9948-b5be-44f8-a270-5614409fb7c1",
+							delFlag : 0
+					};
+					$.ajax({
+						//请求类型
+						type : 'POST',
+						//发送验证请求的url
+						url : "https://vcs.suning.com/vcs/validate_jsonp.htm",
+						//请求时所传参数
+						data : param,
+						//返回数据类型
+						dataType : 'jsonp',
+						//回调函数方法名
+						jsonp : 'callback',
+						//请求成功后的回调函数
+						success : function(data) {
+							//显示验证结果
+							if(data[0].result == 'true'){
+								//进行提交操作
+								needSecCard();
+								//ajaxSmsLogonSendCode();
+							}else{
+								alertBox("验证码不正确，请重新输入",2000);
+								$('.verifyCode').val('');
+								gImgVerCdeErrorCount=0;
+								fun_getVcode();
+							}
+						}
+					});
+				}
+			}else{
+				//进行提交操作
+				needSecCard();
+				//ajaxSmsLogonSendCode();
+			}
+		}
+		
+		// 判断是否需要二次卡验证
+		function needSecCard() {
+			var phoneNumber = $('#phoneNum').val().Trim();
+			if (!checkSmsLoginPhone()) {
+				return false;
+			}
+			var params = {
+				"mobileNum" : phoneNumber,
+				"detect": getDetect(),
+				"dfpToken": getDfpToken()
+			};
+			var encryptDate = SuAES.encrypt(JSON.stringify(params));
+			var _postData = {_x_sso_block_:encryptDate};
+			
+			$.ajax({
+				type : 'GET',
+				url  : passport_prefix_domain + 'ids/secCard/needSecondCardValidate',
+				data : _postData,
+				dataType : 'jsonp',
+				timeout:5000,
+				jsonpCallback: 'needSecondCardValidate',
+				success : function(data) {
+					if(isNotEmpty(data) && isNotEmpty(data.code)){
+						if("SC0000" == data.code) {
+							// 非二次卡,继续去发短信
+							ajaxSmsLogonSendCode();
+						} else if("SC0001" == data.code) {
+							// 是二次卡，弹框让用户选择
+							window.secCardStatus = data.data;
+							$('.eck-choose').removeClass('hide');
+						} else {
+							// 系统异常，请稍后再试！
+							var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+							alertBox(errorMessage,2000);
+							// “获取验证码”按钮取消置灰
+							$('.getYzm').text('获取验证码').addClass('color-o');
+						}
+					}else{
+						// 接口返回异常
+						var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+						alertBox(errorMessage,2000);
+						// “获取验证码”按钮取消置灰
+						$('.getYzm').text('获取验证码').addClass('color-o');
+					}
+				},
+				error : function(data) {
+					var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+					alertBox(errorMessage,2000);
+					// “获取验证码”按钮取消置灰
+					$('.getYzm').text('获取验证码').addClass('color-o');
+				}
+			});
+			
+		}
+		
+		//手机验证码登录发送验证码
+		function ajaxSmsLogonSendCode(){
+			var phoneNumber = $('#phoneNum').val().Trim();
+			
+			if (!checkSmsLoginPhone()) {
+				return false;
+			}
+			
+			var phoneNumberRsa = ssojbossUtil.rsaEncryptString(phoneNumber, ssojbossConstant.rdsyKey);
+			var params = {
+				"sceneId" : ssojbossConstant.rdsySceneId,
+				"stepFlag" : ssojbossConstant.stepTwoFlag,
+				"appCode" : ssojbossConstant.rdsyAppCode,
+				"riskType" : ssojbossValue.riskType,
+				"phoneNum" : phoneNumberRsa,
+				"callback" : "sendCode",
+				"ticket" : ssojbossValue.smsTicket,
+				"code":iarToken,
+				"uuid":"",
+				"data" :{
+					"ways":"duanxindl",
+					"channel":"WAP",
+					"orderChannel":getChannel(),
+					"dfpToken":getDfpToken(),
+					"detect":getDetect(),
+					loginTheme:"wap_new",
+					"userName":phoneNumber,
+					"cntctMobileNum":phoneNumber,
+					"checkAliasName":"0",
+					"referenceURL":window.location.href,
+					"mode":"1",
+					"subMode":"11"
+				}
+			};
+
+			if(needVerifyCodeVal){
+				if(isIarVerifyCode){
+					params.uuid = "iarVerifyCode";
+					params.iarVerifyCode=iar.queryToken();
+				}else if(isUseSlideVerifycode){
+					params.sillerCode = siller.queryToken();
+					params.uuid = "sillerVerifyCode";
+					params.code=siller.queryToken();
+				}
+			}
+
+			console.log("sendCode request data===》",params);
+			var encodeData=SuAES.encrypt(JSON.stringify(params));
+			var _postData = {_x_rdsy_block_:encodeData};
+			$.ajax({
+				type : 'GET',
+				url  : rdsy_prefix_domain + 'rdsy/sendCode.do',
+				data : _postData,
+				dataType : 'jsonp',
+				timeout:5000,
+				jsonpCallback:'sendCode',
+				success : function(data) {
+					/*if(isNotEmpty(data) && (data.code == 'SLR_SUC_0001')){//发送成功
+						//进行成功的处理
+						sendSmsChangeStatus(data);*/
+					if(isNotEmpty(data) && isNotEmpty(data._x_rdsy_resp_)){
+						var req = JSON.parse(SuAES.decrypt(data._x_rdsy_resp_));
+						console.log("sendCode result==>",req);
+						if(req.status=='COMPLETE'){						//进行成功的处理
+							//$('#yzminput').focus();
+							sendSmsChangeStatus(req);
+							ssojbossValue.loginTicket = req.data.ticket;
+						}else if(req.status=='FAILURE'){
+							if(req.code == "R0004"){
+								ssojbossValue.smsTicket=req.data.ticket;
+								ssojbossValue.riskType=req.data.riskType;
+								ssojbossUtil.judgeVerifyType(req.data.riskType,true);
+							}else {
+								alertBox(req.msg);
+							}
+						}
+					}else{
+						//是否显示图片验证码
+						checkShowImageCodeSmsLogin();
+						if(isIarVerifyCode){
+		                    iarToken = "";
+		                    initIar('iar1dx');
+		                }
+						showSmsLoginServerErrorMsg(data);
+					}
+				},
+				error : function(data) {
+					var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+					alertBox(errorMessage,2000);
+				}
+			});
+		}
+		
+		
+		//短信登录提交
+		function loginSmsSubmitPre(){
+		
+			if(!isSendSms()){
+				return false;
+			}
+		
+			if(needVerifyCodeVal){
+				if(checkSmsLoginPhone() && checkSmsCode() && checkValidateCodeOnSubmit(false,true)  ){
+					ajaxCheckVerifyCodeOnSmsSubmit();
+				}
+			}else{
+				if(checkSmsLoginPhone() && checkSmsCode()){
+					ajaxSmsLogonSubmit();
+				}
+			}
+		}
+		
+		//是否发送短信校验 发送返回true 没法送返回 false
+		function isSendSms(){
+			if(ssojbossValue.loginTicket && ssojbossValue.loginTicket != ""){
+				return true;
+			}else{
+				errorMessage = "请点击获取验证码,获取短信验证码！";
+				alertBox(errorMessage,2000);
+				return false;
+			}
+		}
+		
+		//图片验证码的异步校验提交短信登录
+		function ajaxCheckVerifyCodeOnSmsSubmit() {
+			var vcd = $('.verifyCode:visible').val();
+			if(needVerifyCodeVal){
+		        if(ssojbossValue.riskType=='isIarVerifyCode'){
+		            if(iarToken==null || iarToken=="" || !iar.queryStatus()){
+		                alertBox("为了你的账户安全，请拖动拼图完成验证",2000);
+		                return false;
+		            }else{
+		                //进行提交操作
+		                ajaxSmsLogonSubmit();
+		            }
+		        }
+		        if(ssojbossValue.riskType=='isSlideVerifyCode'){
+				if (siller.status == 0 || null == slideVerifycode || slideVerifycode == "" ) {
+					alertBox("为了你的账户安全，请拖动滑块完成验证",2000);
+					return false;
+				}else{
+					//进行提交操作
+					ajaxSmsLogonSubmit();
+				}
+				}
+			}else if(vcd.length==4){	
+				//进行提交操作
+				ajaxSmsLogonSubmit();
+	    	}else{
+				alertBox("验证码格式不正确，请重新输入",2000);
+				return false;
+			}
+		}
+		
+		//手机验证码登录采用ajax方式进行认证请求
+		function ajaxSmsLogonSubmit(){
+			var phoneNumber = $('#phoneNum').val().Trim();
+			var smsCode  = $('#yzminput').val().Trim();
+			
+			if (!checkSmsLoginPhone() || !checkSmsCode()) {
+				return false;
+			}
+			
+			var verifyCode = $(".verifyCode:visible").val();
+			var param = {
+		            smsSceneId: ssojbossConstant.rdsySceneId,
+		            stepFlag:ssojbossConstant.stepThreeFlag,
+		            appCode:ssojbossConstant.rdsyAppCode,
+		            ticket:ssojbossValue.loginTicket,
+		            phoneNumber : ssojbossUtil.rsaEncryptString(phoneNumber, ssojbossConstant.checkAccountKey),
+		            channel: ssojbossConstant.channel,
+		            smsCode:smsCode,
+		            rememberMe: true,
+					version : "2.0",
+		            type : 1,
+		            sceneId: "logonImg",
+		            targetUrl: goUrl,
+		            detect: getDetect(),
+			    secondFlag:"100000000010",
+		            dfpToken: getDfpToken(),
+		            terminal:getTerminal(),
+		            createChannel:getChannel(),
+	    		    custSource:getCreateSource(),
+			    branch:getBranch(),
+			    store:getStore(),
+		            smsCodeVersion:'1.0',
+			};
+			if(needVerifyCodeVal){
+				if(isIarVerifyCode){
+			            param.uuid = "iarVerifyCode";
+			            param.iarVerifyCode=iar.queryToken();
+			        }else if(isUseSlideVerifycode){
+					param.sillerCode = siller.queryToken();
+					param.uuid = "sillerVerifyCode";
+		    	}else{
+					param.imgCode = verifyCode;
+					param.uuid = "fd6e9948-b5be-44f8-a270-5614409fb7c1";
+		    	}
+			}
+			if(sms_loginOrRegFlag == "2"){
+				param.loginOrRegFlag = "2";
+				// 去注册的，出弹框协议
+				protAfterLogin = false;
+				$('.protocol').removeClass('hide');
+			} else {
+				protAfterLogin = true;
+				param.loginOrRegFlag = "1";
+			}
+			//登陆中
+			getMask();
+			$.ajax({
+				type : 'GET',
+				url  : passport_prefix_domain + 'ids/smartLogin/sms',
+				data : param,
+				dataType : 'jsonp',
+				jsonp:'callback',
+				timeout:5000,
+				jsonpCallback:"smsLogin",
+				success : function(data) {
+					closeMask(1);
+					//返回处理
+					onSmsLoginBack(data);
+				},
+				error : function(data) {
+					var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+					alertBox(errorMessage,2000);
+					//重置登录按钮
+					closeMask(1);
+				}
+			});
+		}
+			
+		/**
+		 * 短信登录返回
+		 * 1. 判断返回是 短信错误还是登录错误
+		 * 2.
+		 */
+		function onSmsLoginBack(data){
+			//判断是否登录成功
+			if((isNotEmpty(data) && isNotEmpty(data.success) && data.success) ||
+					(isNotEmpty(data) && isNotEmpty(data.res_message) && data.res_message == "SUCCESS" && data.res_code == 0 )){
+				// 登录成功，记录登录名
+				var name = $('#phoneNum').val().Trim();;
+				addCookie(name,1);
+				//进行成功的跳转
+				if(isNotEmpty(data.redirectUrl)){
+					window.location =data.redirectUrl + "&agentType=wap";
+				}else{
+					window.location = goUrl;
+				}
+			}else if(isNotEmpty(data) && data.code == 302 && data.statusCode && isNotEmpty(data.location) ){	//302判断
+			
+				var location = data.location;
+				location = location.replace("callback=smsLogin","").replace("viewType=json","").replace("jsonViewType=true","")
+				window.location = location;
+				
+			}else{
+				//判断是否注册异常
+				var code = data.code;
+				if(code && code.indexOf("SLR_") == 0){
+					regException(data);
+				}else{
+					loginException(data);
+				}
+			}
+		}
+
+		/**
+		 * 注册异常
+		 *
+		 */
+		function regException(data){
+			//没有账号需要注册
+			if(data.code == 'SLR_ERR_0006'){
+				$('.protocol').removeClass('hide');
+				smsToken_global = data.smsToken;
+			}else if(data.code == 'SLR_ERR_0017'){
+				//二次卡逻辑跳转安全中心
+				window.location = asc_prefix_domain + 'wap/secondCard/show_0.do?ticket=' + data.smsToken; //二次卡流程
+				window.event.returnValue = false;
+			}else{
+				//是否显示图片验证码
+				checkShowImageCodeSmsLogin();
+				showSmsLoginServerErrorMsg(data);	//风控流程
+			}
+		}
+
+		/**
+		 * 登录异常处理
+		 *
+		 * */
+		function loginException(data){
+			showServerErrorMsg(data)
+		}
+
+		/**
+		 * 发起确认登录
+		 * */
+		function confirmLogin(){
+			if(!protAfterLogin) {
+				// 第一次调用登录前出注册协议,什么都不做，返回上层调用
+				return;
+			}
+			var param = {
+				rememberMe:true,
+				smsToken:smsToken_global,
+				version : "2.0",
+				detect:getDetect(),
+				dfpToken:getDfpToken(),
+				terminal:getTerminal(),
+				createChannel:getChannel(),
+				loginChannel:getChannel(),
+				service:"https://aq.suning.com/asc/auth?targetUrl=https://m.suning.com/",
+				jsonViewType: true,
+				viewType: "json",
+			}
+			getMask();
+			$.ajax({
+				type : 'GET',
+				url  : passport_prefix_domain + "ids/smartLogin/sms" ,
+				data : param,
+				//返回数据类型
+				dataType : 'jsonp',
+				//回调函数方法名
+				jsonp : 'callback',
+				timeout:5000,
+				jsonpCallback:"smsLogin",
+				success : function(data) {
+					closeMask(1);
+					//返回处理
+					onSmsLoginBack(data);
+				},
+				error : function(data) {
+					var errorMessage = "不好意思，系统繁忙，请稍后再试！";
+					alertBox(errorMessage,2000);
+					//重置登录按钮
+					closeMask(1);
+				}
+			});
+		}
+		
+		//显示服务器返回的错误信息
+		function showSmsLoginServerErrorMsg(data) {
+			
+			if(isUseSlideVerifycode){
+				slideVerifycode = "";
+				initSiller('siller1', sillerCallback);
+			}
+			var errorCode= "";
+			if(isNotEmpty(data) && isNotEmpty(data.code)){
+				errorCode = data.code;
+			}
+
+			//srs中的错误提示信息
+			if(errorCode=="SLR_ERR_0001"){
+				errorMessage = "请输入手机号码";
+				alertBox(errorMessage,2000);
+				return;
+			}else if(errorCode=="SLR_ERR_0002"){
+				if(isIarVerifyCode){
+			            errorMessage = "为了你的账户安全，请重新拖动拼图完成验证";
+			            alertBox(errorMessage,2000);
+			        }else if(isUseSlideVerifycode){
+					errorMessage = "为了你的账户安全，请重新拖动滑块完成验证";
+					alertBox(errorMessage,2000);
+				}else{
+					errorMessage = "请输入图片验证码！";
+					alertBox(errorMessage,2000);
+				}
+				return;
+			}else if(errorCode=="SLR_ERR_0003"){
+				if(isIarVerifyCode){
+			            errorMessage = "为了你的账户安全，请重新拖动拼图完成验证";
+			            alertBox(errorMessage,2000);
+			        }else if(isUseSlideVerifycode){
+					errorMessage = "为了你的账户安全，请重新拖动滑块完成验证";
+					alertBox(errorMessage,2000);
+				}else{
+					errorMessage = "图片验证码错误，请重新输入！";
+					alertBox(errorMessage,2000);
+					sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				}
+				return;
+			}else if(errorCode=="SLR_ERR_0004"){
+				errorMessage = "手机验证码错误或已失效，请重新输入 ";
+				alertBox(errorMessage,2000);
+				$('.label').text('');
+        			$('#yzminput').val("");
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="SLR_ERR_0010"){
+				errorMessage = "您今日获取语音验证码的次数已达上限，您可以继续尝试获取短信验证码";
+				alertBox(errorMessage,3000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="SLR_ERR_0011"){
+				errorMessage = "发送验证码过于频繁，请您稍后再试";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="SLR_ERR_0012"){
+				errorMessage = "您当日累计获取短信验证码已达上限，请您次日再试";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="SLR_ERR_0013"){
+				errorMessage = "该时间段不支持使用语音验证码，您可以继续尝试获取短信验证码";
+				alertBox(errorMessage,3000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode=="SLR_ERR_9999"){
+				errorMessage = "不好意思，系统繁忙，请稍后再试！";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}else if(errorCode!=""){
+				errorMessage = "不好意思，系统异常，请稍后再试！";
+				alertBox(errorMessage,2000);
+				sendPageErrorMessage("login.do","1&&"+errorCode+"&&"+errorMessage+"&&ssojboss");
+				return;
+			}
+		}
+		
+		function sillerCallback(token){
+			slideVerifycode = token;
+			try{
+            	var sillerObj = $(".sillerVerifyCode:visible")
+            	if(sillerObj && sillerObj.length>0){
+            		if(siller.status == 1){
+                    	sa.click.sendDatasIndex(sillerObj[0]);
+            		}
+            	}
+			}catch(e){}
+		}
+	//获取cookies
+ 	function getCookie(name){
+		var arrStr = document.cookie.split(";");
+		var value =""; 
+		for(var i = 0;i < arrStr.length;i++){ 
+		var temp = arrStr[i].split("=");
+			if(temp[0].trim() == name){
+				value = temp[1]; 
+				return value;       
+			}
+		}
+	}	
+	//图片验证码样式验证
+	function bindInput2(){
+		$(".verifyCode").bind("input propertychange", function() {
+			checkSendMsg2()
+		}).blur(function() {
+			if ($(".imageVerifyArea").css("display") != "none") {    
+				if ($(".verifyCode").val().length == 4 && $("#phoneNum").val().trim().replace(/\s/g, "").length == 11) {
+				$(".getYzm").addClass("color-o")
+				} else {
+					$(".getYzm").removeClass("color-o")
+				}
+			}
+		})
+	}
+	var clicktag2 = 0;
+	// 短信登录二次卡选择缓存
+    var sms_loginOrRegFlag = "0";
+	$(function(){
+
+		var postData = {};
+		postData.errorCode = '';
+		postData.snapshotId = '';
+		// 注册协议弹框点击事件绑定
+		$('.enter').on('click',function(){
+			//发起确认登录
+			confirmLogin();
+		})
+		//初始化图片验证码
+		//fun_getVcode();
+    	//是否显示图片验证码
+    	checkShowImageCode();
+        checkShowImageCodeSmsLogin();
+		initShowVerifyCode();
+		//getCookie();
+		getGoUrl();
+		//显示联合登录服务端错误信息
+		showSmsLoginServerErrorMsg(postData);
+		//显示服务端错误信息
+    	showServerErrorMsg(postData);
+		//检测pptv的cookies信息
+		checkPptvCookie();
+		//input绑定事件
+		$("#username").blur(function(){         
+			checkShowImageCode();
+		});
+		// $("#phoneNum").bind("input propertychange",function(){
+		//     checkShowImageCodeSmsLogin();
+		// });
+		$("#goForgetPwd").click(function(){
+			goForgetPwd();
+		});
+	        bindInput2();
+	        ssojbossUtil.initSwitch();
+		//自动提交时间 废弃
+		/* $("#yzminput").bind("input propertychange", function() {
+		        var a = $(this).val()
+		        if(a.length>=4){
+		            loginSmsSubmitPre()
+		        }
+		}); */
+		// 缓存下次数，减少接口调用次数
+		window.secCardStatus = {}
+		//复写获取验证码按钮事件实现当 needVerifyCode 没有返回的时候 同步调用need
+		$('.getYzm').unbind('click');
+		$('.getYzm').on('click',function(){
+			if(verPhoneMock){
+				clicktag2 = 1;
+				checkShowImageCodeSmsLogin();
+			}
+		})
+		// 联系人姓名弹框中“验证”按钮点击事件
+		$('.eck-d-form-b2').on('click', function(){
+			var cntctPointName = $('#eckName').val().replace(/\s+/g, '');
+			var mobileNum = $('#phoneNum').val().replace(/\s+/g, '')
+			if (secCardStatus.remainTimes == 0) return;
+			// 空校验
+			if (!cntctPointName) return $('.eck-form--tip').html('请输入历史收货人');
+			// 调用收货人姓名验证接口
+			var params = {
+				mobileNum: mobileNum,
+				cntctPointName: cntctPointName
+			}
+			var _postData = { 
+				_x_sso_block_: SuAES.encrypt(JSON.stringify(params))
+			}
+			$.ajax({
+				type: 'GET',
+				url: passport_prefix_domain + 'ids/secCard/validateCntctName', 
+				data: _postData,
+				dataType: 'jsonp',
+				timeout: 5000,
+				jsonpCallback: 'validateCntctName',
+				success: function(data) {
+					if (isNotEmpty(data) && isNotEmpty(data.code)){
+						
+						// 缓存下今日次数
+						window.secCardStatus = data.data;
+						if (data.code == 'SC0100') {
+							// 验证成功
+							$(".eck-choose").addClass('hide');
+							$(".eck-form").addClass('hide');
+							ajaxSmsLogonSendCode();
+						} else if(data.code == 'SC0101') {
+							// 验证失败，收货人姓名不存在
+							if(data.data.remainTimes == "0") {
+								$('.eck-form--tip').html('您已输错' + data.data.failedLimit +'次，请明天再试，或<span class="eck-form--reg">直接注册新账号 ></span>')
+							} else {
+								$('.eck-form--tip').html(data.message + ',今天还有'+ secCardStatus.remainTimes +'次机会，或<span class="eck-form--reg">直接注册新账号 ></span>')
+							}
+						} else if(data.code == 'SC0102') {
+							// 验证次数已达上限
+							$('.eck-form--tip').html('您已输错' + data.data.failedLimit +'次，请明天再试，或<span class="eck-form--reg">直接注册新账号 ></span>')
+						} else {
+							// 其他情况，透传message错误信息
+							$('.eck-form--tip').html(data.message + ',今天还有'+ secCardStatus.remainTimes +'次机会，或<span class="eck-form--reg">直接注册新账号 ></span>')
+						}
+					}else {
+						$('.eck-form--tip').html('网络异常，请稍后再试')
+					}
+				},
+				error: function(error) {
+					$('.eck-form--tip').html('网络异常，请稍后再试')
+				}
+			})
+		})
+		// 绑定 ’买过东西‘ 的事件，有次数弹出输入弹框，没次数弹出失败弹框
+		$('.eck-choose--b1').on('click', function(){
+			sms_loginOrRegFlag = "1";
+			$(".eck-choose").addClass('hide');
+			if (secCardStatus.remainTimes > 0) {
+				$('.eck-form').removeClass('hide');
+			} else {
+				sms_loginOrRegFlag = "0";
+				$('.eck-fail').removeClass('hide');
+			}
+		})
+		//  绑定 ’没买过东西‘ 的事件
+		$('.eck-d-fail-b2, .eck-choose--b2').on('click', function(){
+			sms_loginOrRegFlag = "2";
+			$(".eck-d-w").addClass('hide');
+			ajaxSmsLogonSendCode();
+		})
+		// 空校验
+		$('#eckName').on('input', function(e) {
+			if (!secCardStatus.remainTimes) return;
+			this.value 
+				? $('.eck-form--tip').html('') 
+				: $('.eck-form--tip').html('请输入历史收货人')
+		})
+		// 联系人姓名弹框“X”点击事件
+		$('.eck-d-fail-b1, .eck-close-icon').on('click', function(){
+			$(".eck-d-w").addClass('hide');
+			$('.eck-form--tip').html(''); // 置空提示文案
+			$('#eckName').val(''); // 置空输入框文案
+			// “获取验证码”按钮取消置灰
+            $('.getYzm').text('获取验证码').addClass('color-o');
+		})
+		// 联系人弹框中提示点击事件
+		$('.eck-form--tip').on('click', '.eck-form--reg', function(){
+			$(".eck-d-w").addClass('hide');
+			sms_loginOrRegFlag = "2";
+			ajaxSmsLogonSendCode();
+		})
+		
+		
+		function asyncNeed(callback){
+			userNameVal=$('#username').val();
+			var param = {
+	                    sceneId : 'PASSPORT',
+	                    stepFlag : ssojbossConstant.stepFlag,
+	                    appCode : ssojbossConstant.rdsyAppCode,
+	                    data:{
+	                        ways:'duanxindl',
+	                        channel:'WAP',
+	                        orderChannel:getChannel(),
+	                        dfpToken:getDfpToken(),
+	                        detect:getDetect(),
+	                        loginTheme:"wap_new",
+	                        referenceURL:window.location.href,
+	                        userName:userNameVal,
+	                        cntctMobileNum:userNameVal,
+	                        mode:'1',
+	                        subMode:'11'
+		                }
+	                };
+
+	                var encodeData=SuAES.encrypt(JSON.stringify(param));
+	                var _postData = {_x_rdsy_block_:encodeData};
+	                $.ajax( {
+	                    type : 'GET',
+	                    url  : rdsy_prefix_domain + 'rdsy/needVerifyCode.do',
+	                    data : _postData,
+	                    dataType : 'jsonp',
+	                    timeout:5000,
+	                    jsonpCallback:"needVerifyCode",
+	                    success : function(data){
+	                        if(data!=null && data._x_rdsy_resp_!=null){
+	                            var req = JSON.parse(SuAES.decrypt(data._x_rdsy_resp_));
+	                            console.log("needVerifyCode===>",req);
+	                            needVerifyCodeVal = false;
+	                            if(req.status=='COMPLETE'){
+	                                ssojbossValue.smsTicket=req.data.ticket;
+	                                ssojbossValue.riskType=req.data.riskType;
+
+	                                ssojbossUtil.judgeVerifyType(req.data.riskType,false);
+
+
+	                            }else{
+	                                showErrorInfo(req.msg);
+	                            }
+	                        }
+				callback();
+	                    },
+	                    error : function(data){
+			    	callback();
+	                    }
+	                });
+	  	}
+		
+	  	$("#yzminput").val();
+		if("1" == notUseSmsLogin){
+				hideSms();
+		}
+	  })
+	//隐藏短信登录
+	function hideSms(){
+			$(".login-content").addClass('hide');
+            $(".login-content2").removeClass('hide');
+			$(".other_btn2").hide()
+		}
+			
+	/*ADD BY 88386730 PCLOG===错误信息采集===*/    
+	function sendPageErrorMessage(urlName,msg){
+		var msgArr = msg.split("&&");
+		var param = {
+				type_name : urlName,//接口名称
+				error_type : msgArr[0],//错误类型：0系统异常、1业务异常、2页面检查
+				error_code : msgArr[1],//报错代码： 不仅仅是404之类的
+				error_detail : msgArr[2],//报错详情：提示详情描述
+				
+				member_id : getCookie("custno"),//会员编码
+				member_level :getCookie("custLevel"),//会员等级
+				region : getCookie("SN_CITY"),//区域
+				
+				bid : msgArr[3] //产品线标识
+				};
+			try{
+				sa.openAPI=sa.openAPI||{};
+				sa.initTrackerConfig();
+				sa.openAPI.sendMsgV2(param);
+				//sa.openAPI.sendMessage(urlName,msg);
+				//alert("success-msg-->"+param.region);
+				//alert("success-msg-->"+param.error_code);
+			}catch(e){
+				//alert(e);
+			}	
+		};
+		
+	
+		
+</script>
+<script type="text/javascript">
+	/**
+	 * 第一步：在页面引入基础代码
+	 * 埋点前请检查页面是否已经埋入此代码，避免重复引入代码
+	 * 此部分代码不允许修改，若私自修改源码导致出现的问题，后果自负
+	 */
+	 var sa;if(!sa){sa={}}if(!sa.click){sa.click={}}(function(){var t=/^\w*?.suning.com$/,s=document.location.hostname,g=(("https:"==document.location.protocol)?"https://":"http://"),o=h(),b="|",c=location.href,m=l(p(c));function q(Z,M){var Y=Z.name?l(Z.name):"name undefined";if(Y=="name undefined"){var aa=Z.attributes.name;if(aa!=undefined&&aa!=null){Y=aa.value?l(aa.value):"name undefined"}}if(M!=undefined&&M!=null&&M!=""){var J=Z.attributes[M];if(J!=undefined&&J!=null){Y=J.value?l(J.value):M+" undefined"}}var N=Z.id?l(Z.id):"id undefined",Q=new Array(),z=(e(Z,Q),Q)?l(Q.join("").replace(/\s|\|/ig,"")):"text undefined",T=(T=document.getElementById("resourceType"))?T.value:"",A=N+b+Y+b+z,R=(R=document.getElementById("errorCode"))?R.value:"",W=g+o+"/ajaxClick.gif",y=u(),k="_snck";i(k,y,"/","","");var X=n("_snmp"),D=typeof sn=="object"?sn.cityId:"can not get cityId",I=y+b+X+b+A+b+m,V=Z.href?Z.href:"",H=(V?w(V):"-"),K=document.getElementById("URLPattern"),P=(K?K.value:"");var C="";var F=n("logonStatus");if(F!=undefined&&F!=null){C=F}var E="";var j=n("_snma");if(j!=undefined&&j!=null&&j.indexOf("|")>=0){try{E=j.split("|")[1]}catch(U){}}var B="";var x=n("idsLoginUserIdLastTime");if(x!=undefined&&x!=null){B=x}var S="";var O=n("custno");if(O!=undefined&&O!=null){S=O}var L="";var ab=n("_snmb");if(ab!=undefined&&ab!=null&&ab.indexOf("|")>=0){try{L=ab.split("|")[0]}catch(U){}}var G=W+"?_snmk="+I+"&_snme="+R+"&_type="+T+"&_cId="+D+"&_sid="+H+"&urlPattern="+P+"&vid="+E+"&lu="+B+"&sid="+L+"&mid="+S+"&ls="+C;v(G)}function u(){var k=new Date(),j=Math.round(100000*Math.random()),x=k.getTime().toString().concat(j);return x}function n(k){var j=document.cookie.split("; ");for(var x=0;x<j.length;x++){var y=j[x].split("=");if(y[0]==k){return unescape(y[1])}}}function v(j){var x="log_"+(new Date()).getTime();var k=window[x]=new Image();k.onload=(k.onerror=function(){window[x]=null});k.src=j+"&iId="+x;k=null}function h(){if(t.test(s)){return"click.suning.cn/sa"}else{return"clicksit.suning.cn/sa"}}function d(){return document.domain}function i(k,j,C,B,A){var z=k+"="+escape(j);if(B!=""){var y=new Date();y.setTime(y.getTime()+B);z+=";expires="+y.toGMTString()}if(C!=""){z+=";path="+C}var x=d();if(x.indexOf(".suning.com")!=-1){z+=";domain=.suning.com"}else{if(x.indexOf(".cnsuning.com")!=-1){z+=";domain=.cnsuning.com"}else{z+=";domain="+A}}document.cookie=z}function w(k){var j="-";if(!a(k)){j=f(k,"tid","&")}return j}function p(j){if(j.length>301){j=j.substring(0,300)}while(j.indexOf(b)!=-1){j=j.replace(b,"--")}return j}function e(x,k){if(x.nodeType==3){k.push(x.nodeValue)}else{if(x.nodeType==1){for(var j=x.firstChild;j!=null;j=j.nextSibling){e(j,k)}}}}function l(j){return j!=null?encodeURIComponent(j):""}function f(x,k,A){var z="-",j;if(!a(x)&&!a(k)&&!a(A)){j=x.indexOf(k);if(j>-1){var y=x.indexOf(A,j);if(y<0){y=x.length}z=x.substring(j+k.length+1,y)}}return z}function a(j){return(undefined==j||""==j||"-"==j)}var r=sa.click;r.sendDatasIndex=q})();
+	/**
+	 * 第二步：为元素绑定click事件
+	 * 技术支持：此方案需要jQuery支持，使用此方案前请确认使用的jquery版本对live方法的支持性
+	 * 功能：为点击对象添加点击事件处理函数
+	 * 示例解释：下面的示例中是为标签的name以test_dac_index_开头的元素埋点，实际生产中的name属性命名约束请联系贺婷芳(12061488)确认；未经确认不得埋点，否则引起冲突后果自负
+	 * 示例修改：在具体埋点过程中请开发人员根据具体的name修改a[name^=\*需要埋点的name*\]或者input[name^=\*需要埋点的name*\]
+	 * 命名技术规范：标签的name,id属性不能含有"|"
+	 */
+	$(document).ready(function(){
+		// wap注册
+		$("a[name*=WAP_login_],input[name*=WAP_login_],span[name*=WAP_login_],li[id^=WAP_login_],div[name*=WAP_login_]").live("click",function(){
+			sa.click.sendDatasIndex(this);
+		});
+	});
+</script>
+<script type="text/javascript">
+	function getDfpToken(){
+	    try{
+		dfpToken = _dfp.getToken();
+		return dfpToken;
+	    }catch(exception){
+		return "passport_dfpToken_js_is_error";
+	    }
+	}
+</script>
+</body>
+
+
+</html>
